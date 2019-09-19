@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float Health = 100;
-    public float Stamina = 100;
+    public float Speed = 10.0f;
+    private float translation;
+    private float straffe;
 
-    [Space]
-    public float Speed;
-    public float RunningSpeed;
+    public int JumpSpeed = 50;
 
-    private bool Grounded;
+    private bool canJump;
+    private Rigidbody RB;
 
     void Start()
     {
-        
+        RB = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        
+        translation = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
+        straffe = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
+        transform.Translate(straffe, 0, translation);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            RB.AddForce(0, JumpSpeed, 0, ForceMode.Impulse);
     }
 }
