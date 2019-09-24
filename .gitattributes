@@ -26,8 +26,8 @@
 
 # Image formats
 *.psd filter=lfs diff=lfs merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
+# *.jpg filter=lfs diff=lfs merge=lfs
+# *.png filter=lfs diff=lfs merge=lfs -text #Það þarf ekki að geyma þetta í LFS og það hafa komið villur með þetta í LFS
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.bmp filter=lfs diff=lfs merge=lfs -text
 *.tga filter=lfs diff=lfs merge=lfs -text
