@@ -10,4 +10,15 @@ public class Interface : MonoBehaviour
 
     public Text InteractText;
     public string[] InteractMessages;
+
+    public void Interacting(int msg)
+    {
+        InteractText.gameObject.SetActive(true);
+        InteractText.text = InteractMessages[msg];
+    }
+
+    public void NotInteracting()
+    {
+        InteractText.gameObject.SetActive(false);
+    }
 }

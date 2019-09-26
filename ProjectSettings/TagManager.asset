@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interface
   - Object
+  - Drop
   layers:
   - Default
   - TransparentFX

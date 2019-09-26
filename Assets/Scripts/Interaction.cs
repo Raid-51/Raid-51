@@ -13,8 +13,8 @@ public class Interaction : MonoBehaviour
     void Start()
     {
         cam = GetComponentInChildren<Camera>();
-        INV = GetComponent<Inventory>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
+        INV = IF.gameObject.GetComponentInChildren<Inventory>();
     }
 
     void Update()
@@ -25,11 +25,34 @@ public class Interaction : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Range))
         {
             if (hit.collider.tag == "Object")
+            {
+                IF.Interacting(0);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    INV.AddToInventory(hit.collider.GetComponent<Object>().ObjectName, hit.collider.GetComponent<Object>().ObjectID);
-                    Destroy(hit.collider.gameObject);
+                    if (!INV.Fullinventory)
+                    {
+                        INV.AddToInventory(hit.collider.GetComponent<Object>().ObjectID);
+                        Destroy(hit.collider.gameObject);
+                    }
                 }
+
+            }
+            else if (hit.collider.tag == "Door")
+            {
+
+            }
+            else if (hit.collider.tag == "Elevator")
+            {
+
+            }
+            else if (hit.collider.tag == "Lock")
+            {
+
+            }
+            else
+                IF.NotInteracting();
         }
+        else
+            IF.NotInteracting();
     }
 }
