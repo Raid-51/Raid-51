@@ -46,3 +46,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Fyrir downlowds folders sem eru með rosalega mikið af drasli
+Downloads/
+Downloads.meta
