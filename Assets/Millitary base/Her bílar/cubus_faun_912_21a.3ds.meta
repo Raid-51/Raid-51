@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 5b06fc2079a9c0d47a7ca7483f2e0b09
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _driver
+    100002: boxen
+    100004: //RootNode
+    100006: detail
+    100008: glasf
+    100010: glash
+    100012: kaba
+    100014: kabi
+    100016: kf
+    100018: licht
+    100020: motor
+    100022: plane1
+    100024: pritsche
+    100026: raeder
+    100028: rahmen
+    100030: tools
+    100032: verdeck
+    400000: _driver
+    400002: boxen
+    400004: //RootNode
+    400006: detail
+    400008: glasf
+    400010: glash
+    400012: kaba
+    400014: kabi
+    400016: kf
+    400018: licht
+    400020: motor
+    400022: plane1
+    400024: pritsche
+    400026: raeder
+    400028: rahmen
+    400030: tools
+    400032: verdeck
+    2100000: opel_plane
+    2100002: motor1
+    2100004: player
+    2100006: licht
+    2100008: kaba
+    2100010: tools
+    2100012: fenster
+    2100014: detail
+    2100016: pritsche
+    2100018: rahmen
+    2100020: 5t_plane
+    2100022: raeder
+    2100024: kabi
+    2300000: _driver
+    2300002: boxen
+    2300004: detail
+    2300006: glasf
+    2300008: glash
+    2300010: kaba
+    2300012: kabi
+    2300014: kf
+    2300016: licht
+    2300018: motor
+    2300020: plane1
+    2300022: pritsche
+    2300024: raeder
+    2300026: rahmen
+    2300028: tools
+    2300030: verdeck
+    3300000: _driver
+    3300002: boxen
+    3300004: detail
+    3300006: glasf
+    3300008: glash
+    3300010: kaba
+    3300012: kabi
+    3300014: kf
+    3300016: licht
+    3300018: motor
+    3300020: plane1
+    3300022: pritsche
+    3300024: raeder
+    3300026: rahmen
+    3300028: tools
+    3300030: verdeck
+    4300000: verdeck
+    4300002: motor
+    4300004: _driver
+    4300006: licht
+    4300008: tools
+    4300010: glasf
+    4300012: glash
+    4300014: plane1
+    4300016: pritsche
+    4300018: raeder
+    4300020: kabi
+    4300022: kf
+    4300024: rahmen
+    4300026: detail
+    4300028: kaba
+    4300030: boxen
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
