@@ -78,8 +78,11 @@ public class Enemy : MonoBehaviour
     }
     void LateUpdate ()
     {
-        Quaternion lookRotation = Quaternion.LookRotation (player.position - -Torso.position);
-        Torso.rotation *= lookRotation;
+        if (SeenPlayer)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation (new Vector3(player.position.x, player.position.y + offset, player.position.z) - Torso.position);
+            Torso.rotation = lookRotation;
+        }
     }
 
     void GotoNextPoint()
@@ -98,6 +101,11 @@ public class Enemy : MonoBehaviour
         agent.stoppingDistance = 3;
         IsRunning = true;
 
+        Vector3 lookPos = player.position - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
+
         if (agent.remainingDistance < 3.2f)
         {
             Anim.SetBool("Shooting", true);
@@ -110,5 +118,6 @@ public class Enemy : MonoBehaviour
     {
         agent.stoppingDistance = 0;
         IsRunning = false;
+        Anim.SetBool("Shooting", false);
     }
 }
