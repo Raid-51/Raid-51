@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySight : MonoBehaviour
 {
+    public float SightRange;
+
     private Transform player;
 
     void Start()
@@ -20,9 +22,15 @@ public class EnemySight : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player = other.transform;
+            //player = other.transform;
 
-            RaycastHit hit;
+
+            //if (Physics.CheckSphere(transform.position, SightRange))
+            //{
+            //    print("found you");
+            //}
+
+            /*RaycastHit hit;
             Ray ray = new Ray(transform.position, player.transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue);
 
@@ -32,7 +40,7 @@ public class EnemySight : MonoBehaviour
                 {
                     print("found you");
                 }
-            }
+            }*/
         }
     }
 }
