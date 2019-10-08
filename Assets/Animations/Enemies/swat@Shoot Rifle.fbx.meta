@@ -1,150 +1,162 @@
 fileFormatVersion: 2
-guid: 5a2bec7fa955e5b4f903ad698bbe5893
+guid: c9ad5f9bacd72c64ebbd7ae89e9c5ea0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: swat:Head
-    100002: swat:HeadTop_End
-    100004: swat:Hips
-    100006: swat:Jaw
-    100008: swat:LeftArm
-    100010: swat:LeftEye
-    100012: swat:LeftFoot
-    100014: swat:LeftFootToeBase_End
-    100016: swat:LeftForeArm
-    100018: swat:LeftHand
-    100020: swat:LeftHandIndex1
-    100022: swat:LeftHandIndex2
-    100024: swat:LeftHandIndex3
-    100026: swat:LeftHandIndex4
-    100028: swat:LeftHandMiddle1
-    100030: swat:LeftHandMiddle2
-    100032: swat:LeftHandMiddle3
-    100034: swat:LeftHandMiddle4
-    100036: swat:LeftHandPinky1
-    100038: swat:LeftHandPinky2
-    100040: swat:LeftHandPinky3
-    100042: swat:LeftHandPinky4
-    100044: swat:LeftHandRing1
-    100046: swat:LeftHandRing2
-    100048: swat:LeftHandRing3
-    100050: swat:LeftHandRing4
-    100052: swat:LeftHandThumb1
-    100054: swat:LeftHandThumb2
-    100056: swat:LeftHandThumb3
-    100058: swat:LeftHandThumb4
-    100060: swat:LeftLeg
-    100062: swat:LeftShoulder
-    100064: swat:LeftToeBase
-    100066: swat:LeftUpLeg
-    100068: swat:Neck
-    100070: swat:Neck1
-    100072: swat:RightArm
-    100074: swat:RightEye
-    100076: swat:RightFoot
-    100078: swat:RightFootToeBase_End
-    100080: swat:RightForeArm
-    100082: swat:RightHand
-    100084: swat:RightHandIndex1
-    100086: swat:RightHandIndex2
-    100088: swat:RightHandIndex3
-    100090: swat:RightHandIndex4
-    100092: swat:RightHandMiddle1
-    100094: swat:RightHandMiddle2
-    100096: swat:RightHandMiddle3
-    100098: swat:RightHandMiddle4
-    100100: swat:RightHandPinky1
-    100102: swat:RightHandPinky2
-    100104: swat:RightHandPinky3
-    100106: swat:RightHandPinky4
-    100108: swat:RightHandRing1
-    100110: swat:RightHandRing2
-    100112: swat:RightHandRing3
-    100114: swat:RightHandRing4
-    100116: swat:RightHandThumb1
-    100118: swat:RightHandThumb2
-    100120: swat:RightHandThumb3
-    100122: swat:RightHandThumb4
-    100124: swat:RightLeg
-    100126: swat:RightShoulder
-    100128: swat:RightToeBase
-    100130: swat:RightUpLeg
-    100132: swat:Spine
-    100134: swat:Spine1
-    100136: swat:Spine2
-    100138: //RootNode
-    400000: swat:Head
-    400002: swat:HeadTop_End
-    400004: swat:Hips
-    400006: swat:Jaw
-    400008: swat:LeftArm
-    400010: swat:LeftEye
-    400012: swat:LeftFoot
-    400014: swat:LeftFootToeBase_End
-    400016: swat:LeftForeArm
-    400018: swat:LeftHand
-    400020: swat:LeftHandIndex1
-    400022: swat:LeftHandIndex2
-    400024: swat:LeftHandIndex3
-    400026: swat:LeftHandIndex4
-    400028: swat:LeftHandMiddle1
-    400030: swat:LeftHandMiddle2
-    400032: swat:LeftHandMiddle3
-    400034: swat:LeftHandMiddle4
-    400036: swat:LeftHandPinky1
-    400038: swat:LeftHandPinky2
-    400040: swat:LeftHandPinky3
-    400042: swat:LeftHandPinky4
-    400044: swat:LeftHandRing1
-    400046: swat:LeftHandRing2
-    400048: swat:LeftHandRing3
-    400050: swat:LeftHandRing4
-    400052: swat:LeftHandThumb1
-    400054: swat:LeftHandThumb2
-    400056: swat:LeftHandThumb3
-    400058: swat:LeftHandThumb4
-    400060: swat:LeftLeg
-    400062: swat:LeftShoulder
-    400064: swat:LeftToeBase
-    400066: swat:LeftUpLeg
-    400068: swat:Neck
-    400070: swat:Neck1
-    400072: swat:RightArm
-    400074: swat:RightEye
-    400076: swat:RightFoot
-    400078: swat:RightFootToeBase_End
-    400080: swat:RightForeArm
-    400082: swat:RightHand
-    400084: swat:RightHandIndex1
-    400086: swat:RightHandIndex2
-    400088: swat:RightHandIndex3
-    400090: swat:RightHandIndex4
-    400092: swat:RightHandMiddle1
-    400094: swat:RightHandMiddle2
-    400096: swat:RightHandMiddle3
-    400098: swat:RightHandMiddle4
-    400100: swat:RightHandPinky1
-    400102: swat:RightHandPinky2
-    400104: swat:RightHandPinky3
-    400106: swat:RightHandPinky4
-    400108: swat:RightHandRing1
-    400110: swat:RightHandRing2
-    400112: swat:RightHandRing3
-    400114: swat:RightHandRing4
-    400116: swat:RightHandThumb1
-    400118: swat:RightHandThumb2
-    400120: swat:RightHandThumb3
-    400122: swat:RightHandThumb4
-    400124: swat:RightLeg
-    400126: swat:RightShoulder
-    400128: swat:RightToeBase
-    400130: swat:RightUpLeg
-    400132: swat:Spine
-    400134: swat:Spine1
-    400136: swat:Spine2
-    400138: //RootNode
-    7400000: Firing Rifle
+    100000: Geo
+    100002: Soldier_body
+    100004: Soldier_head
+    100006: swat:Head
+    100008: swat:HeadTop_End
+    100010: swat:Hips
+    100012: swat:Jaw
+    100014: swat:LeftArm
+    100016: swat:LeftEye
+    100018: swat:LeftFoot
+    100020: swat:LeftFootToeBase_End
+    100022: swat:LeftForeArm
+    100024: swat:LeftHand
+    100026: swat:LeftHandIndex1
+    100028: swat:LeftHandIndex2
+    100030: swat:LeftHandIndex3
+    100032: swat:LeftHandIndex4
+    100034: swat:LeftHandMiddle1
+    100036: swat:LeftHandMiddle2
+    100038: swat:LeftHandMiddle3
+    100040: swat:LeftHandMiddle4
+    100042: swat:LeftHandPinky1
+    100044: swat:LeftHandPinky2
+    100046: swat:LeftHandPinky3
+    100048: swat:LeftHandPinky4
+    100050: swat:LeftHandRing1
+    100052: swat:LeftHandRing2
+    100054: swat:LeftHandRing3
+    100056: swat:LeftHandRing4
+    100058: swat:LeftHandThumb1
+    100060: swat:LeftHandThumb2
+    100062: swat:LeftHandThumb3
+    100064: swat:LeftHandThumb4
+    100066: swat:LeftLeg
+    100068: swat:LeftShoulder
+    100070: swat:LeftToeBase
+    100072: swat:LeftUpLeg
+    100074: swat:Neck
+    100076: swat:Neck1
+    100078: swat:RightArm
+    100080: swat:RightEye
+    100082: swat:RightFoot
+    100084: swat:RightFootToeBase_End
+    100086: swat:RightForeArm
+    100088: swat:RightHand
+    100090: swat:RightHandIndex1
+    100092: swat:RightHandIndex2
+    100094: swat:RightHandIndex3
+    100096: swat:RightHandIndex4
+    100098: swat:RightHandMiddle1
+    100100: swat:RightHandMiddle2
+    100102: swat:RightHandMiddle3
+    100104: swat:RightHandMiddle4
+    100106: swat:RightHandPinky1
+    100108: swat:RightHandPinky2
+    100110: swat:RightHandPinky3
+    100112: swat:RightHandPinky4
+    100114: swat:RightHandRing1
+    100116: swat:RightHandRing2
+    100118: swat:RightHandRing3
+    100120: swat:RightHandRing4
+    100122: swat:RightHandThumb1
+    100124: swat:RightHandThumb2
+    100126: swat:RightHandThumb3
+    100128: swat:RightHandThumb4
+    100130: swat:RightLeg
+    100132: swat:RightShoulder
+    100134: swat:RightToeBase
+    100136: swat:RightUpLeg
+    100138: swat:Spine
+    100140: swat:Spine1
+    100142: swat:Spine2
+    100144: //RootNode
+    400000: Geo
+    400002: Soldier_body
+    400004: Soldier_head
+    400006: swat:Head
+    400008: swat:HeadTop_End
+    400010: swat:Hips
+    400012: swat:Jaw
+    400014: swat:LeftArm
+    400016: swat:LeftEye
+    400018: swat:LeftFoot
+    400020: swat:LeftFootToeBase_End
+    400022: swat:LeftForeArm
+    400024: swat:LeftHand
+    400026: swat:LeftHandIndex1
+    400028: swat:LeftHandIndex2
+    400030: swat:LeftHandIndex3
+    400032: swat:LeftHandIndex4
+    400034: swat:LeftHandMiddle1
+    400036: swat:LeftHandMiddle2
+    400038: swat:LeftHandMiddle3
+    400040: swat:LeftHandMiddle4
+    400042: swat:LeftHandPinky1
+    400044: swat:LeftHandPinky2
+    400046: swat:LeftHandPinky3
+    400048: swat:LeftHandPinky4
+    400050: swat:LeftHandRing1
+    400052: swat:LeftHandRing2
+    400054: swat:LeftHandRing3
+    400056: swat:LeftHandRing4
+    400058: swat:LeftHandThumb1
+    400060: swat:LeftHandThumb2
+    400062: swat:LeftHandThumb3
+    400064: swat:LeftHandThumb4
+    400066: swat:LeftLeg
+    400068: swat:LeftShoulder
+    400070: swat:LeftToeBase
+    400072: swat:LeftUpLeg
+    400074: swat:Neck
+    400076: swat:Neck1
+    400078: swat:RightArm
+    400080: swat:RightEye
+    400082: swat:RightFoot
+    400084: swat:RightFootToeBase_End
+    400086: swat:RightForeArm
+    400088: swat:RightHand
+    400090: swat:RightHandIndex1
+    400092: swat:RightHandIndex2
+    400094: swat:RightHandIndex3
+    400096: swat:RightHandIndex4
+    400098: swat:RightHandMiddle1
+    400100: swat:RightHandMiddle2
+    400102: swat:RightHandMiddle3
+    400104: swat:RightHandMiddle4
+    400106: swat:RightHandPinky1
+    400108: swat:RightHandPinky2
+    400110: swat:RightHandPinky3
+    400112: swat:RightHandPinky4
+    400114: swat:RightHandRing1
+    400116: swat:RightHandRing2
+    400118: swat:RightHandRing3
+    400120: swat:RightHandRing4
+    400122: swat:RightHandThumb1
+    400124: swat:RightHandThumb2
+    400126: swat:RightHandThumb3
+    400128: swat:RightHandThumb4
+    400130: swat:RightLeg
+    400132: swat:RightShoulder
+    400134: swat:RightToeBase
+    400136: swat:RightUpLeg
+    400138: swat:Spine
+    400140: swat:Spine1
+    400142: swat:Spine2
+    400144: //RootNode
+    2100000: Soldier_body1
+    2100002: Soldier_head6
+    4300000: Soldier_head
+    4300002: Soldier_body
+    7400000: Shoot Rifle
     9500000: //RootNode
+    13700000: Soldier_body
+    13700002: Soldier_head
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -159,14 +171,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'swat:LeftUpLeg'
-      : position error = 8.948158 mm\n\t'swat:LeftLeg' : position error = 36.730949
-      mm\n\t'swat:LeftFoot' : position error = 34.473839 mm\n\t'swat:LeftToeBase'
-      : position error = 12.958743 mm\n\t'swat:RightUpLeg' : position error = 8.948155
-      mm\n\t'swat:RightLeg' : position error = 36.731346 mm\n\t'swat:RightFoot' :
-      position error = 34.473984 mm\n\t'swat:RightToeBase' : position error = 12.958743
-      mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
@@ -185,12 +190,12 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Firing Rifle
+      name: Shoot Rifle
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 56
       wrapMode: 0
-      orientationOffsetY: -33.3
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -198,12 +203,12 @@ ModelImporter:
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

@@ -1867,7 +1867,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: dae76cdaa744f5f489094ff271cb86ba, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9da34b9b2adf4f447805a2b89f59292a, type: 3}
   m_Bones:
   - {fileID: 5788487345010905332}
   - {fileID: 5788487345010905384}
@@ -1928,7 +1928,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5788487345011395906}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dae76cdaa744f5f489094ff271cb86ba, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 9da34b9b2adf4f447805a2b89f59292a, type: 3}
   m_Controller: {fileID: 9100000, guid: 0bdfff8f9f7004d499447abf96a10e75, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -1983,20 +1983,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5788487345011395906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d143fcc56324d94989872675771700c, type: 3}
+  m_Script: {fileID: 11500000, guid: f9cba95efdbf1c94daf3534885be8710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  WalkingSpeed: 0
+  WalkingSpeed: 3
   RunningSpeed: 6
-  Waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Waypoints: []
+  TimeTilUninterested: 5
   SightRange: 5
   SightPoint: {fileID: 5661617733751126169}
+  Torso: {fileID: 5788487345010905322}
+  offset: 0
 --- !u!1 &5788487345011395908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2099,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300002, guid: dae76cdaa744f5f489094ff271cb86ba, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 9da34b9b2adf4f447805a2b89f59292a, type: 3}
   m_Bones:
   - {fileID: 5788487345010905448}
   - {fileID: 5788487345010905320}
@@ -2187,7 +2185,7 @@ Transform:
   m_GameObject: {fileID: 5788487345011395912}
   m_LocalRotation: {x: 1.0234468e-15, y: -0.0000000125804505, z: 0.00000039506045,
     w: 1}
-  m_LocalPosition: {x: -0.000000038415237, y: 1.0600551, z: -0.00039258314}
+  m_LocalPosition: {x: 0, y: 1.0600551, z: -0.00039258314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5788487345010905390}
