@@ -18,6 +18,11 @@ public class Enemy : MonoBehaviour
     public float SightRange = 5;
     public Transform SightPoint;
 
+    public Transform GunBarrel;
+    public float Damage;
+    public float ShootInterval;
+    private float ShootTime;
+
     private float Speed;
     private bool IsRunning;
     private int destPoint = 0;
@@ -26,14 +31,17 @@ public class Enemy : MonoBehaviour
     private bool SeenPlayer;
     private float stoptime;
     private Animator Anim;
+    private Player PlayerScript;
 
     public Transform Torso;
-    public float offset;
 
     void Start()
     {
         Anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("EnemyLookat").GetComponent<Transform>();
+        PlayerScript = player.transform.parent.GetComponent<Player>();
+        ShootTime = ShootInterval;
         GotoNextPoint();
     }
 
@@ -56,7 +64,6 @@ public class Enemy : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                player = hit.transform;
                 SeenPlayer = true;
                 stoptime = TimeTilUninterested;
             }
@@ -76,11 +83,12 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
     void LateUpdate ()
     {
         if (SeenPlayer)
         {
-            Quaternion lookRotation = Quaternion.LookRotation (new Vector3(player.position.x, player.position.y + offset, player.position.z) - Torso.position);
+            Quaternion lookRotation = Quaternion.LookRotation (new Vector3(player.position.x, player.position.y + 0.8f, player.position.z) - Torso.position);
             Torso.rotation = lookRotation;
         }
     }
@@ -89,27 +97,26 @@ public class Enemy : MonoBehaviour
     {
         if (Waypoints.Length == 0)
             return;
-
         agent.destination = Waypoints[destPoint].position;
-
         destPoint = (destPoint + 1) % Waypoints.Length;
     }
 
     void ChasePlayer()
     {
+        ShootTime -= Time.deltaTime;
         agent.destination = player.position;
         agent.stoppingDistance = 3;
         IsRunning = true;
+        Anim.SetBool("Running", true);
+        ShootGun();
 
         Vector3 lookPos = player.position - transform.position;
         lookPos.y = 0;
         Quaternion rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
 
-        if (agent.remainingDistance < 3.2f)
-        {
+        if (agent.remainingDistance < 3.1f)
             Anim.SetBool("Shooting", true);
-        }
         else
             Anim.SetBool("Shooting", false);
     }
@@ -118,6 +125,26 @@ public class Enemy : MonoBehaviour
     {
         agent.stoppingDistance = 0;
         IsRunning = false;
+        Anim.SetBool("Running", false);
         Anim.SetBool("Shooting", false);
+    }
+
+    void ShootGun()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(GunBarrel.transform.position, -GunBarrel.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "Player")
+            {
+                if (ShootTime < 0.1f)
+                {
+                    ShootTime = ShootInterval;
+                    PlayerScript.Health -= Damage;
+                }
+            }
+        }
     }
 }

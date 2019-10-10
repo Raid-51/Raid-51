@@ -7,6 +7,7 @@ TagManager:
   - Interface
   - Object
   - Drop
+  - EnemyLookat
   - Breakable fence
   layers:
   - Default
