@@ -1621,6 +1621,7 @@ MonoBehaviour:
   - OPEN
   - INSERT KEYCARD
   - GET IN
+  - Cut fence
 --- !u!1 &4198953787026063510
 GameObject:
   m_ObjectHideFlags: 0
