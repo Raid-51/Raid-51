@@ -37,9 +37,17 @@ public class Interaction : MonoBehaviour
                 }
 
             }
-            else if (hit.collider.tag == "Fence")
+            else if (hit.collider.tag == "Breakable fence")
             {
+                IF.Interacting(4);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    // Það er búið að smella á hliðið
+                    //if ()
+                    //{
 
+                    //}
+                }
             }
             else if (hit.collider.tag == "Door")
             {

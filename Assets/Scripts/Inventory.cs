@@ -81,6 +81,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int CurrentItemID()
+    {
+
+        return 5;
+    }
+
     public void ClearSlot()
     {
         if (Scroll == 0)
