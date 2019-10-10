@@ -7,6 +7,7 @@ TagManager:
   - Interface
   - Object
   - Drop
+  - Breakable fence
   layers:
   - Default
   - TransparentFX
