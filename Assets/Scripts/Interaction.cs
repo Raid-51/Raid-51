@@ -37,6 +37,10 @@ public class Interaction : MonoBehaviour
                 }
 
             }
+            else if (hit.collider.tag == "Fence")
+            {
+
+            }
             else if (hit.collider.tag == "Door")
             {
 

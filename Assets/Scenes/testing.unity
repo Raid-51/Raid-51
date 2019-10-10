@@ -446,6 +446,26 @@ PrefabInstance:
       propertyPath: offset
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 5788487345158964029, guid: de988a649ac31b745bf5b2de168df4bd,
+        type: 3}
+      propertyPath: TimeTilUninterested
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788487345158964029, guid: de988a649ac31b745bf5b2de168df4bd,
+        type: 3}
+      propertyPath: GunBarrel
+      value: 
+      objectReference: {fileID: 1927540113}
+    - target: {fileID: 5788487345158964029, guid: de988a649ac31b745bf5b2de168df4bd,
+        type: 3}
+      propertyPath: ShootInterval
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788487345158964029, guid: de988a649ac31b745bf5b2de168df4bd,
+        type: 3}
+      propertyPath: Damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5788487345010905322, guid: de988a649ac31b745bf5b2de168df4bd,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -470,6 +490,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788487345158964031, guid: de988a649ac31b745bf5b2de168df4bd,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de988a649ac31b745bf5b2de168df4bd, type: 3}
@@ -1017,6 +1042,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &956431207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7572571223943016414, guid: 599c27a9180280f4fa2dceb918678ea0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7572571224126345105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088356164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1343,12 @@ Transform:
   m_Father: {fileID: 64841462}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1224252888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3074944343253261671, guid: de988a649ac31b745bf5b2de168df4bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 538214912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1343158246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1655,6 +1692,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1174767100}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1927540112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927540113}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1927540113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927540112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.125, z: -0.702}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1224252888}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1947175370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947175371}
+  m_Layer: 0
+  m_Name: EnemyLookatpoint
+  m_TagString: EnemyLookat
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1947175371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947175370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: -0.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 956431207}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2062218273
 PrefabInstance:
