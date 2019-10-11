@@ -83,8 +83,15 @@ public class Inventory : MonoBehaviour
 
     public int CurrentItemID()
     {
-
-        return 5;
+        switch (Scroll)
+        {
+            case 0:
+                return itemID1;
+            case 1:
+                return itemID2;
+            default:
+                return itemID3;
+        }
     }
 
     public void ClearSlot()

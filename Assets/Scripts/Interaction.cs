@@ -9,12 +9,16 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     private Inventory INV;
     private Interface IF;
+    private Breakable_fence BF;
 
     void Start()
     {
         cam = GetComponentInChildren<Camera>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
         INV = IF.gameObject.GetComponentInChildren<Inventory>();
+
+        // Breakable fence
+        BF = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
     }
 
     void Update()
@@ -39,14 +43,15 @@ public class Interaction : MonoBehaviour
             }
             else if (hit.collider.tag == "Breakable fence")
             {
-                IF.Interacting(4);
-                if (Input.GetMouseButtonDown(0))
+                if (INV.CurrentItemID() == 2)
                 {
-                    // Það er búið að smella á hliðið
-                    //if ()
-                    //{
+                    IF.Interacting(4);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Breakable_fence fence_hit_script = hit.collider.gameObject.GetComponent<Breakable_fence>();
 
-                    //}
+                        fence_hit_script.destroyed = true;
+                    }
                 }
             }
             else if (hit.collider.tag == "Door")
