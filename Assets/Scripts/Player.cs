@@ -29,74 +29,84 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        PlayerSpeed();
+        PlayerSpeed(); //Stillir hraða spilarans
 
+        //Hreyfir spilarann
         translation = Input.GetAxis("Vertical") * CurrentSpeed * Time.deltaTime;
         straffe = Input.GetAxis("Horizontal") * CurrentSpeed * Time.deltaTime;
         transform.Translate(straffe, 0, translation);
-
+        
+        //Ef spilarinn er á jörðu
         if (Grounded)
-            if (Stamina > 10)
-                if (Input.GetKeyDown(KeyCode.Space))
+            if (Stamina > 10) //Og er með nóg þol
+                if (Input.GetKeyDown(KeyCode.Space)) //Og ýtir á "space"
                 {
-                    RB.AddForce(0, JumpSpeed, 0, ForceMode.Impulse);
+                    RB.AddForce(0, JumpSpeed, 0, ForceMode.Impulse); //L´tur spilarann hoppa
                     Stamina -= 10;
                 }
 
+        //Sýnir þol og líf spilarans á skjánum (interface)
         IF.Stamina.value = Stamina;
         IF.Health.value = Health;
-
-        if (Stamina < 0) Stamina = 0;
-        if (Stamina > IF.Stamina.maxValue) Stamina = IF.Stamina.maxValue;
+    
+        if (Stamina < 0) Stamina = 0; //Ef þolið er komið undir 0 þá er það sett á 0, á ekki að geta farið undir það
+        if (Stamina > IF.Stamina.maxValue) Stamina = IF.Stamina.maxValue; //Ef þolið er komið yfir 100 þá er það sett á 100, á ekki að geta yfir það
     }
 
     void FixedUpdate()
     {
+        //Skýtur raycast niður
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.5f))
         {
-            if (hit.distance < 0.3f)
+            if (hit.distance < 0.3f) //Ef það hittir jörðina þá er spilarinn líka á jörðunni
                 Grounded = true;
-            else
+            else //Annars er hann það ekki
                 Grounded = false;
         }
     }
-
+    //Stillir hraða spilarans
     void PlayerSpeed()
-    {
+    {   
+        //Ef hann er á jörðunni
         if (Grounded)
-        {
+        {   
+            //Og er hlaupandi
             if (Input.GetButton("Run"))
             {
+                //Og er með nóg þol
                 if (Stamina > 0.3)
                 {
-                    CurrentSpeed = RunSpeed;
-                    Stamina -= 0.5f;
+                    CurrentSpeed = RunSpeed; //Þá hleypur hann
+                    Stamina -= 0.5f; //Minnkar þolið
                 }
-                else
+                else //Annars ekki
                     CurrentSpeed = Speed;
             }
-            else
+            else //Ef hann er ekki hlaupandi þá gengur hann á venjulegum hraða
             {
                 CurrentSpeed = Speed;
-                Stamina += 0.2f;
+                Stamina += 0.2f; //Aukar þolið
             }
-
+            //Ef hann er að crouch-a 
             if (Input.GetButton("Crouch"))
             {
-                CurrentSpeed = CurrentSpeed * 0.4f;
-                transform.localScale = new Vector3(1, 0.5f, 1);
+                CurrentSpeed = CurrentSpeed * 0.4f; //Hraðinn minnkar
+                transform.localScale = new Vector3(1, 0.5f, 1); //Spilarinn minkar niður
             }
+            //Ef hann er ekki að crouch-a
             else
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1); //Spilarinn stækkar aftur
 
+            //Ef spilarinn labbar á afturábak eða til hliðar þá labbar hann hægar
             if (Input.GetButton("Horizontal") || Input.GetKey(KeyCode.S))
                 CurrentSpeed = CurrentSpeed * 0.5f;
         }
+        //Ef hann er ekki á jörðunni þá fer hann með lofthraða
         else
             CurrentSpeed = AirSpeed;
     }
-
+    //Spilarinn getur misst líf
     public void TakeDamage(float Damage)
     {
         Health -= Damage;
