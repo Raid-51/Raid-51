@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Breakable_fence : MonoBehaviour
 {
+    // breyta búin til til þess að taka eftir hvenær það á að brjóta hliðið
     public bool destroyed = false;
 
-
     void Update()
-    {
+    {   
+        // Þetta gerist af annað script breytir valueinu á destroyed í true
         if (destroyed == true)
         {
             // Skipta um girðingar módel
@@ -18,6 +19,7 @@ public class Breakable_fence : MonoBehaviour
             // Slökkva á girðingar collider svo að spilarinn geti labbað í gegn og til þess að aþð sé ekki hægt að ýta á girðinguna aftur
             transform.gameObject.GetComponent<BoxCollider>().enabled = false;
 
+            // Gera destroyed false aftur til þess að triggera þetta ekki aftur
             destroyed = false;
         }
     }
