@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &8433680326708083225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3463218269735126773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.47922, y: 3.3329692, z: 2.6124926}
+  m_Center: {x: -0.10292578, y: 1.6124933, z: 0}
 --- !u!1001 &3463218269735157841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +22,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100004, guid: 5b06fc2079a9c0d47a7ca7483f2e0b09, type: 3}
       propertyPath: m_Name
-      value: Troop transport
+      value: Troop transport Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5b06fc2079a9c0d47a7ca7483f2e0b09, type: 3}
       propertyPath: m_IsActive
@@ -65,3 +78,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b06fc2079a9c0d47a7ca7483f2e0b09, type: 3}
+--- !u!1 &3463218269735126773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 5b06fc2079a9c0d47a7ca7483f2e0b09,
+    type: 3}
+  m_PrefabInstance: {fileID: 3463218269735157841}
+  m_PrefabAsset: {fileID: 0}
