@@ -59,6 +59,18 @@ public class Interaction : MonoBehaviour
                     }
                 }
             }
+            //Ef það hittir geimveru sem er hægt að frelsa
+            else if (hit.collider.tag == "Alien")
+            {
+                if (hit.collider.GetComponent<Alien>().Freed == false)
+                {
+                    IF.Interacting(5); //Sýnir texta
+                    if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
+                    {
+                        hit.collider.GetComponent<Alien>().Run();
+                    }
+                }
+            }
             //Ef það hittir hurð sem er hægt að opna
             else if (hit.collider.tag == "Door")
             {

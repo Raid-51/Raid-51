@@ -9,6 +9,7 @@ TagManager:
   - Drop
   - EnemyLookat
   - Breakable fence
+  - Alien
   layers:
   - Default
   - TransparentFX
