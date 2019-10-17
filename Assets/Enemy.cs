@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
 {
     public float Health = 100;
 
+    // Þetta er eitthvað sem önnur script geta notað til þess að fá vörðinn til þess að triggera dauða animation
+    public bool Dead = false;
+
     public float WalkingSpeed;
     public float RunningSpeed;
 
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour
     private float stoptime;
     private Animator Anim;
     private Player PlayerScript;
+    private CapsuleCollider this_collider;
 
     public Transform Torso; //Magin á honum sem snýst til að horfa á spilarann
 
@@ -39,6 +43,7 @@ public class Enemy : MonoBehaviour
     {
         Anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        this_collider = GetComponent<CapsuleCollider>();
         player = GameObject.FindWithTag("EnemyLookat").GetComponent<Transform>();
         PlayerScript = player.transform.parent.GetComponent<Player>();
         ShootTime = ShootInterval;
@@ -47,6 +52,17 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (Dead == true)
+        {
+            // Triggera death animation
+            Anim.SetTrigger("Dead");
+
+            // Eyða öllu functionalityinu á verðinum
+            Destroy(this_collider);
+            Destroy(agent);
+            Destroy(this);
+        }
+
         //Ef hann er kominn nógu nálægt staðsetningunni þá fer hann að næsta
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
             GotoNextPoint();
