@@ -74,7 +74,11 @@ public class Interaction : MonoBehaviour
             //Ef það hittir hurð sem er hægt að opna
             else if (hit.collider.tag == "Door")
             {
-
+                IF.Interacting(1); //Sýnir texta
+                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
+                {
+                    hit.collider.GetComponent<Opendoor>().Open();
+                }
             }
             //Ef það hittir liftu sem er hægt að fara í
             else if (hit.collider.tag == "Elevator")
