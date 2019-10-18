@@ -10,6 +10,7 @@ TagManager:
   - EnemyLookat
   - Breakable fence
   - Alien
+  - Door
   - Enemy
   layers:
   - Default
