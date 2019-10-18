@@ -10,6 +10,7 @@ TagManager:
   - EnemyLookat
   - Breakable fence
   - Alien
+  - Enemy
   layers:
   - Default
   - TransparentFX
