@@ -57,6 +57,9 @@ public class Enemy : MonoBehaviour
             // Triggera death animation
             Anim.SetTrigger("Dead");
 
+            // Stoppa vörðinn frá því að hreyfa sig eftir að deyja
+            Anim.SetBool("Shooting", false);
+
             // Eyða öllu functionalityinu á verðinum
             Destroy(this_collider);
             Destroy(agent);
@@ -123,7 +126,7 @@ public class Enemy : MonoBehaviour
         destPoint = (destPoint + 1) % Waypoints.Length;
     }
     //Eltir spilarann
-    void ChasePlayer()
+    public void ChasePlayer()
     {
         ShootTime -= Time.deltaTime;
         agent.destination = player.position; //Eltir spilarann

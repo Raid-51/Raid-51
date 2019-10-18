@@ -50726,11 +50726,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1784835501172263615, guid: 95c8af629b45cb540adb56b4f461022f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1784835501172627103, guid: 95c8af629b45cb540adb56b4f461022f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -50785,11 +50780,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1784835501020529856, guid: 95c8af629b45cb540adb56b4f461022f,
-        type: 3}
-      propertyPath: Waypoints.Array.size
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1784835501020529856, guid: 95c8af629b45cb540adb56b4f461022f,
         type: 3}

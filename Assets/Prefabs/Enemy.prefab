@@ -648,9 +648,9 @@ GameObject:
   - component: {fileID: 1784835501020529857}
   - component: {fileID: 1784835501020529858}
   - component: {fileID: 1784835501020529856}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -740,10 +740,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
+  Dead: 0
   WalkingSpeed: 3
   RunningSpeed: 6
   Waypoints:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -755,7 +755,6 @@ MonoBehaviour:
   Damage: 5
   ShootInterval: 0.5
   Torso: {fileID: 1784835501172627223}
-  offset: 0.8
 --- !u!1 &1784835501172263617
 GameObject:
   m_ObjectHideFlags: 0
