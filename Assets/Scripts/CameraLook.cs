@@ -13,6 +13,8 @@ public class CameraLook : MonoBehaviour
     private GameObject character;
 
     float rotationY = 0F;
+    private Vector2 mouseLook;
+    private Vector2 rot;
 
     void Start()
     {
@@ -28,13 +30,14 @@ public class CameraLook : MonoBehaviour
         rotationY += Input.GetAxis("Mouse Y") * Sensitivity;
         rotationY = Mathf.Clamp(rotationY, -LimitY, LimitY);
 
-        transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-        //character.transform.localRotation = Quaternion.AngleAxis(rotationX, character.transform.up);
+        transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
 
         if (Input.GetKeyDown(KeyCode.Escape))
             UnlockCursor();
         if (Input.GetMouseButtonDown(0))
             LockCursor();
+
+        RotateCharacter();
 
     }
 
@@ -47,5 +50,17 @@ public class CameraLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    void RotateCharacter()
+    {
+        Vector2 vec = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")); //Nær í staðsetningu músarinar
+        //Reiknar hraða og staðsetningu músar á skjánum
+        vec = Vector2.Scale(vec, new Vector2(Sensitivity, Sensitivity));
+        rot.x = Mathf.Lerp(rot.x, vec.x, 1);
+        rot.y = Mathf.Lerp(rot.y, vec.y, 1);
+        mouseLook += rot;
+
+        character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up); //Snýr spilaranum
     }
 }

@@ -10,7 +10,7 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     private Inventory INV;
     private Interface IF;
-    private Breakable_fence BF;
+    //private Breakable_fence BF;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class Interaction : MonoBehaviour
         INV = IF.gameObject.GetComponentInChildren<Inventory>();
 
         // Breakable fence
-        BF = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
+        //BF = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
     }
 
     void Update()
@@ -53,9 +53,9 @@ public class Interaction : MonoBehaviour
                     IF.Interacting(4); //Sýnir texta
                     if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hlutinn (smellir á mús)
                     {
-                        Breakable_fence fence_hit_script = hit.collider.gameObject.GetComponent<Breakable_fence>(); //Nær í fence scriptina
+                        Breakable_fence BF = hit.collider.gameObject.GetComponent<Breakable_fence>(); //Nær í fence scriptina
 
-                        fence_hit_script.destroyed = true; //Opnar girðinguna
+                        BF.destroyed = true; //Opnar girðinguna
                     }
                 }
             }

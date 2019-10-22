@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float Health = 100;
     public float Stamina = 100;
 
+
     [Header("Speed")]
     public float Speed = 10;
     public float RunSpeed = 15;
@@ -57,9 +58,9 @@ public class Player : MonoBehaviour
     {
         //Skýtur raycast niður
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 0.5f))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), -Vector3.up, out hit, 2))
         {
-            if (hit.distance < 0.3f) //Ef það hittir jörðina þá er spilarinn líka á jörðunni
+            if (hit.distance < 1.1f) //Ef það hittir jörðina þá er spilarinn líka á jörðunni
                 Grounded = true;
             else //Annars er hann það ekki
                 Grounded = false;
@@ -67,10 +68,10 @@ public class Player : MonoBehaviour
     }
     //Stillir hraða spilarans
     void PlayerSpeed()
-    {   
+    {
         //Ef hann er á jörðunni
         if (Grounded)
-        {   
+        {
             //Og er hlaupandi
             if (Input.GetButton("Run"))
             {
@@ -104,11 +105,21 @@ public class Player : MonoBehaviour
         }
         //Ef hann er ekki á jörðunni þá fer hann með lofthraða
         else
-            CurrentSpeed = AirSpeed;
+        {
+            if (Input.GetButton("Run"))
+                CurrentSpeed = AirSpeed * 2;
+            else
+                CurrentSpeed = AirSpeed;
+        }
     }
     //Spilarinn getur misst líf
     public void TakeDamage(float Damage)
     {
         Health -= Damage;
     }
+
+    /*void OnCollisionEnter(Collision collision)
+    {
+        RB.velocity = Vector3.zero;
+    }*/
 }

@@ -16,7 +16,7 @@ public class Alien : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = RunPos.position;
-        agent.Stop();
+        agent.isStopped = true;
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class Alien : MonoBehaviour
 
     public void Run()
     {
-        agent.Resume();
+        agent.isStopped = false;
         Anim.SetTrigger("Run");
         agent.stoppingDistance = 0;
         Freed = true;
