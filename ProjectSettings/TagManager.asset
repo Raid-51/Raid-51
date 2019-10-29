@@ -12,6 +12,7 @@ TagManager:
   - Alien
   - Door
   - Enemy
+  - SwitchSceneDoor
   layers:
   - Default
   - TransparentFX

@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
     private ItemDatabase ItemD;
     private Transform DropPoint;
 
-    private int Scroll = 0; //Hvaða slot er highlightað
+    public int Scroll = 0; //Hvaða slot er highlightað
 
     public bool Fullinventory;
 
@@ -37,6 +37,26 @@ public class Inventory : MonoBehaviour
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
+
+        // Tékka hvort að að séu upplýsingar um sýðasta inverntory spilarans
+        GameObject OldINVGameObject = GameObject.Find("Old Scene Player Info");
+        if (OldINVGameObject != null)
+        {
+            SwitchSceneDoor OldINV = OldINVGameObject.GetComponent<SwitchSceneDoor>();
+
+            Scroll = OldINV.OldSceneScroll;
+
+            itemID1 = OldINV.OldSceneItemID[0];
+            ItemIcon1.sprite = OldINV.OldSceneItemSprites[0].sprite;
+
+            itemID2 = OldINV.OldSceneItemID[1];
+            ItemIcon2.sprite = OldINV.OldSceneItemSprites[1].sprite;
+
+            itemID3 = OldINV.OldSceneItemID[2];
+            ItemIcon3.sprite = OldINV.OldSceneItemSprites[2].sprite;
+
+            Destroy(OldINVGameObject);
+        }
     }
 
     void Update()
@@ -142,4 +162,24 @@ public class Inventory : MonoBehaviour
             ItemIcon3.sprite = ItemD.Items[0].ObjectIcon;
         }
     }
+    //public void FillSlot(int slotID, int objectID)
+    //{
+    //    if (slotID == 1)
+    //    {
+    //        itemID1 = objectID;
+    //        ItemIcon1.sprite = ItemD.Items[objectID].ObjectIcon;
+    //    }
+        
+    //    else if (slotID == 2)
+    //    {
+    //        itemID2 = objectID;
+    //        ItemIcon2.sprite = ItemD.Items[objectID].ObjectIcon;
+    //    }
+
+    //    else if (slotID == 3)
+    //    {
+    //        itemID3 = objectID;
+    //        ItemIcon3.sprite = ItemD.Items[objectID].ObjectIcon;
+    //    }
+    //}
 }

@@ -10,7 +10,6 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     private Inventory INV;
     private Interface IF;
-    private Breakable_fence BF;
 
     void Start()
     {
@@ -18,9 +17,6 @@ public class Interaction : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
         INV = IF.gameObject.GetComponentInChildren<Inventory>();
-
-        // Breakable fence
-        BF = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
     }
 
     void Update()
@@ -81,9 +77,15 @@ public class Interaction : MonoBehaviour
                 }
             }
             //Ef það hittir liftu sem er hægt að fara í
-            else if (hit.collider.tag == "Elevator")
+            else if (hit.collider.tag == "SwitchSceneDoor")
             {
+                SwitchSceneDoor switchSceneDoor = hit.collider.gameObject.GetComponent<SwitchSceneDoor>();
+                IF.Interacting(switchSceneDoor.InteractionTextID);
 
+                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
+                {
+                    switchSceneDoor.SwitchScene();
+                }
             }
             //Ef það hittir lás sem er hægt að opna
             else if (hit.collider.tag == "Lock")
