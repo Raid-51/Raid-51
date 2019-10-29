@@ -49,9 +49,9 @@ public class Interaction : MonoBehaviour
                     IF.Interacting(4); //Sýnir texta
                     if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hlutinn (smellir á mús)
                     {
-                        Breakable_fence fence_hit_script = hit.collider.gameObject.GetComponent<Breakable_fence>(); //Nær í fence scriptina
+                        Breakable_fence BF = hit.collider.gameObject.GetComponent<Breakable_fence>(); //Nær í fence scriptina
 
-                        fence_hit_script.destroyed = true; //Opnar girðinguna
+                        BF.destroyed = true; //Opnar girðinguna
                     }
                 }
             }
