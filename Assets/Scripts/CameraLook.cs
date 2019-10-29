@@ -32,10 +32,10 @@ public class CameraLook : MonoBehaviour
 
         transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            UnlockCursor();
-        if (Input.GetMouseButtonDown(0))
-            LockCursor();
+        //if (Input.GetKeyDown(KeyCode.Escape))
+            //UnlockCursor();
+        //if (Input.GetMouseButtonDown(0))
+            //LockCursor();
 
         RotateCharacter();
 
