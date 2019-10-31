@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Opendoor : MonoBehaviour
 {
+    [Header("NOT REQUIRED! (Anim is for cell door)")]
+    public SwitchSceneDoor SceneDoor;
+
     public Animator Anim;
 
     public void Open()
     {
-        Anim.SetBool("Open", true);
+        if (SceneDoor == null)
+            Anim.SetBool("Open", true);
+        else
+            SceneDoor.Locked = false;
     }
 
 }

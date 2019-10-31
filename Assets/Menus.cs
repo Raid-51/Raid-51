@@ -11,6 +11,7 @@ public class Menus : MonoBehaviour
 
     [Header("Death")]
     public GameObject DeathMenu;
+    public bool immortal;
     private bool IsDead;
 
     private Player PlayerScript;
@@ -28,8 +29,11 @@ public class Menus : MonoBehaviour
         if (Input.GetButtonDown("Pause"))
             if (!Paused) PauseAndUnPause(true);
 
-        if (PlayerScript.Health <= 0)
-            StartCoroutine(Dead());
+        if (!immortal)
+        {
+            if (PlayerScript.Health <= 0)
+                StartCoroutine(Dead());
+        }
     }
     public void PauseAndUnPause(bool hmm)
     {

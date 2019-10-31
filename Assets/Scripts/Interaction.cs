@@ -70,21 +70,31 @@ public class Interaction : MonoBehaviour
             //Ef það hittir hurð sem er hægt að opna
             else if (hit.collider.tag == "Door")
             {
-                IF.Interacting(1); //Sýnir texta
-                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
+                if (INV.CurrentItemID() == 4)
                 {
-                    hit.collider.GetComponent<Opendoor>().Open();
+                    IF.Interacting(1);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        hit.collider.GetComponent<Opendoor>().Open();
+                    }
                 }
+                else
+                    IF.Interacting(8);
             }
-            //Ef það hittir liftu sem er hægt að fara í
             else if (hit.collider.tag == "SwitchSceneDoor")
             {
-                SwitchSceneDoor switchSceneDoor = hit.collider.gameObject.GetComponent<SwitchSceneDoor>();
-                IF.Interacting(switchSceneDoor.InteractionTextID);
+                SwitchSceneDoor SwitchDoor = hit.collider.gameObject.GetComponent<SwitchSceneDoor>();
 
-                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
+                if (SwitchDoor.Locked)
+                    IF.Interacting(9);
+                else
                 {
-                    switchSceneDoor.SwitchScene();
+                    IF.Interacting(SwitchDoor.InteractionTextID);
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        SwitchDoor.SwitchScene();
+                    }
                 }
             }
             //Ef það hittir lás sem er hægt að opna
