@@ -9,17 +9,24 @@ public class SwitchSceneDoor : MonoBehaviour
     public int SceneNumber;
     public int InteractionTextID;
 
-    [HideInInspector]
-    public int OldSceneScroll;
-    [HideInInspector]
-    public List<int> OldSceneItemID = new List<int>(3);
-    [HideInInspector]
-    public List<Image> OldSceneItemSprites = new List<Image>(3);
+    private GameObject IFGameObject;
+
+    void Start()
+    {
+        IFGameObject = GameObject.FindGameObjectWithTag("Interface");
+    }
 
     public void SwitchScene()
     {
         Collider collider = this.GetComponent<BoxCollider>();
         collider.enabled = false;
+
+        DontDestroyOnLoad(IFGameObject);
+
+        foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
+        {
+            DontDestroyOnLoad(Pickupable);
+        }
 
         SceneManager.LoadScene(SceneNumber);
     }

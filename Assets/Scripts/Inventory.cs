@@ -41,6 +41,15 @@ public class Inventory : MonoBehaviour
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
+
+        // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
+        foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
+        {
+            if (Pickupable.GetComponent<Object>().SceneNumber == SceneManager.GetActiveScene().buildIndex)
+                Pickupable.SetActive(true);
+            else
+                Pickupable.SetActive(false);
+        }
     }
 
     void Update()
