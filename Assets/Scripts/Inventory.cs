@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -33,29 +34,21 @@ public class Inventory : MonoBehaviour
     public GameObject GunController;
     private GameObject currentGunController;
 
-    void Start()
+    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
+    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
+
+    void CustomStart(Scene scene, LoadSceneMode mode)
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
 
-        // Tékka hvort að að séu upplýsingar um sýðasta inverntory spilarans
-        GameObject OldINVGameObject = GameObject.Find("Old Scene Player Info");
-        if (OldINVGameObject != null)
+        // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
+        foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
         {
-            SwitchSceneDoor OldINV = OldINVGameObject.GetComponent<SwitchSceneDoor>();
-
-            Scroll = OldINV.OldSceneScroll;
-
-            itemID1 = OldINV.OldSceneItemID[0];
-            ItemIcon1.sprite = OldINV.OldSceneItemSprites[0].sprite;
-
-            itemID2 = OldINV.OldSceneItemID[1];
-            ItemIcon2.sprite = OldINV.OldSceneItemSprites[1].sprite;
-
-            itemID3 = OldINV.OldSceneItemID[2];
-            ItemIcon3.sprite = OldINV.OldSceneItemSprites[2].sprite;
-
-            Destroy(OldINVGameObject);
+            if (Pickupable.GetComponent<Object>().SceneNumber == SceneManager.GetActiveScene().buildIndex)
+                Pickupable.SetActive(true);
+            else
+                Pickupable.SetActive(false);
         }
     }
 

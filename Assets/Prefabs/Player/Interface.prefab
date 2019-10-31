@@ -2683,6 +2683,7 @@ MonoBehaviour:
   - CUT FENCE
   - FREE ALIEN
   - ENTER BUNKER
+  - LEAVE BUNKER
 --- !u!114 &8046549614113823401
 MonoBehaviour:
   m_ObjectHideFlags: 0
