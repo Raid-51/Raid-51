@@ -11,6 +11,12 @@ public class Interface : MonoBehaviour
     public Text InteractText;
     public string[] InteractMessages; //Geymir mismunandi texta
 
+    void Awake()
+    {
+        if (GameObject.FindGameObjectsWithTag("Interface").Length > 1)
+            this.gameObject.SetActive(false);
+    }
+
     //Sýnir texta ef playerinn interact-ar við eitthvað
     public void Interacting(int msg)
     {

@@ -21,11 +21,13 @@ public class SwitchSceneDoor : MonoBehaviour
         Collider collider = this.GetComponent<BoxCollider>();
         collider.enabled = false;
 
-        DontDestroyOnLoad(IFGameObject);
+        if (IFGameObject.scene.buildIndex != -1)
+            DontDestroyOnLoad(IFGameObject);
 
         foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
         {
-            DontDestroyOnLoad(Pickupable);
+            if (Pickupable.scene.buildIndex != -1)
+                DontDestroyOnLoad(Pickupable);
         }
 
         SceneManager.LoadScene(SceneNumber);
