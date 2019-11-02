@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class SwitchSceneManager : MonoBehaviour
 {
     public List<GameObject> AllPickups;
+    public string NextSpawnLocationName;
 
     // Þessi kóði þarf allur að keyra á undan Start methodunum
     void Awake()

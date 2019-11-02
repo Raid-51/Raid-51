@@ -10,7 +10,7 @@ public class Interaction : MonoBehaviour
     private Camera cam;
     private Inventory INV;
     private Interface IF;
-    private ItemManager ItemM;
+    private SwitchSceneManager SSM;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class Interaction : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
         INV = IF.gameObject.GetComponentInChildren<Inventory>();
-        ItemM = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemManager>();
+        SSM = GameObject.FindGameObjectWithTag("GameController").GetComponent<SwitchSceneManager>();
     }
 
     void Update()
@@ -38,7 +38,7 @@ public class Interaction : MonoBehaviour
                     if (!INV.Fullinventory) //Ef inventory-ið er ekki fullt
                     {
                         INV.AddToInventory(hit.collider.GetComponent<Object>().ObjectID); //Setur hlutinn í inventory-ið
-                        ItemM.AllPickups.Remove(hit.collider.gameObject);
+                        SSM.AllPickups.Remove(hit.collider.gameObject);
                         Destroy(hit.collider.gameObject); //Eyðir hlutinum úr veröldinni
                     }
                 }

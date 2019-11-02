@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
     public Toggle ItemToggle3;
 
     private ItemDatabase ItemD;
-    private ItemManager ItemM;
+    private SwitchSceneManager SSM;
     private Transform DropPoint;
 
     public int Scroll = 0; //Hvaða slot er highlightað
@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
-        ItemM = ItemD.gameObject.GetComponent<ItemManager>();
+        SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
 
         int currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -49,12 +49,12 @@ public class Inventory : MonoBehaviour
         // Eyða öllum pickupable hlutunum sem byrjuðu í sceninu en eiga ekki að vera lengur því að leikurinn er að geyma þá
         foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
         {
-            if ( !ItemM.AllPickups.Contains(Pickupable) )
+            if ( !SSM.AllPickups.Contains(Pickupable) )
                 Destroy(Pickupable);
         }
 
         // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
-        foreach (GameObject Pickupable in ItemM.AllPickups)
+        foreach (GameObject Pickupable in SSM.AllPickups)
         {
             if (Pickupable.GetComponent<Object>().SceneNumber == currentScene)
                 Pickupable.SetActive(true);
@@ -148,7 +148,7 @@ public class Inventory : MonoBehaviour
             //Hreynsar inventory slot-ið
             itemID1 = 0;
             ItemIcon1.sprite = ItemD.Items[0].ObjectIcon;
-            ItemM.AllPickups.Add(droppedItem);
+            SSM.AllPickups.Add(droppedItem);
         }
         //Ef slot 2 er highlightað
         if (Scroll == 1)
@@ -157,7 +157,7 @@ public class Inventory : MonoBehaviour
             //Hreynsar inventory slot-ið
             itemID2 = 0;
             ItemIcon2.sprite = ItemD.Items[0].ObjectIcon;
-            ItemM.AllPickups.Add(droppedItem);
+            SSM.AllPickups.Add(droppedItem);
         }
         //Ef slot 3 er highlightað
         if (Scroll == 2)
@@ -166,7 +166,7 @@ public class Inventory : MonoBehaviour
             //Hreynsar inventory slot-ið
             itemID3 = 0;
             ItemIcon3.sprite = ItemD.Items[0].ObjectIcon;
-            ItemM.AllPickups.Add(droppedItem);
+            SSM.AllPickups.Add(droppedItem);
         }
     }
     //public void FillSlot(int slotID, int objectID)
