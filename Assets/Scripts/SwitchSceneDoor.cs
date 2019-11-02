@@ -8,6 +8,7 @@ public class SwitchSceneDoor : MonoBehaviour
 {
     public int SceneNumber;
     public int InteractionTextID;
+    public bool Locked = true;
 
     private GameObject IFGameObject;
 

@@ -2684,6 +2684,8 @@ MonoBehaviour:
   - FREE ALIEN
   - ENTER BUNKER
   - LEAVE BUNKER
+  - YOU NEED A KEYCARD
+  - LOCKED
 --- !u!114 &8046549614113823401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,6 +2700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1731972040}
   DeathMenu: {fileID: 603266971661660751}
+  immortal: 1
 --- !u!1 &4198953787026063510
 GameObject:
   m_ObjectHideFlags: 0
