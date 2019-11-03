@@ -2699,6 +2699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1731972040}
+  disablePauseScreen: 0
   DeathMenu: {fileID: 603266971661660751}
   immortal: 1
 --- !u!1 &4198953787026063510

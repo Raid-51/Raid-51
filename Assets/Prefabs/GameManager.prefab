@@ -77,3 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllPickups: []
+  NextSpawnLocationName: 
+  LastSceneHealth: 100
+  LastSceneStamina: 100

@@ -149,6 +149,7 @@ public class Inventory : MonoBehaviour
             itemID1 = 0;
             ItemIcon1.sprite = ItemD.Items[0].ObjectIcon;
             SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
         //Ef slot 2 er highlightað
         if (Scroll == 1)
@@ -158,6 +159,7 @@ public class Inventory : MonoBehaviour
             itemID2 = 0;
             ItemIcon2.sprite = ItemD.Items[0].ObjectIcon;
             SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
         //Ef slot 3 er highlightað
         if (Scroll == 2)
@@ -167,6 +169,7 @@ public class Inventory : MonoBehaviour
             itemID3 = 0;
             ItemIcon3.sprite = ItemD.Items[0].ObjectIcon;
             SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
     }
     //public void FillSlot(int slotID, int objectID)
