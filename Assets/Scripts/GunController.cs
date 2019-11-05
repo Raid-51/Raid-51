@@ -23,10 +23,11 @@ public class GunController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && INV.CurrentItemID() == 3)
         {
+            int layerMask = ~(1 << 11);
             RaycastHit hit;
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, gunRange))
+            if (Physics.Raycast(ray, out hit, layerMask))
             {
                 //Ef það hittir óvin
                 if (hit.collider.tag == "Enemy")

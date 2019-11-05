@@ -18,7 +18,10 @@ public class Menus : MonoBehaviour
     private Player PlayerScript;
     private CameraLook Cam;
 
-    void Start()
+    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
+    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
+
+    void CustomStart(Scene scene, LoadSceneMode mode)
     {
         PlayerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
         Cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraLook>();
