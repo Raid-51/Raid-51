@@ -10,6 +10,7 @@ public class NewEnemy : MonoBehaviour
     public float Health = 100;
     public float WalkingSpeed = 3;
     public float RunningSpeed = 6;
+    public bool dead = false;
 
     [Space]
     public Transform[] Waypoints; //Geymir staðsetningarnar sem hann á að labba á milli
@@ -40,6 +41,9 @@ public class NewEnemy : MonoBehaviour
     private float stoptime;
     private Animator Anim;
     private Player PlayerScript;
+    private Collider thisCollider;
+    private GameObject VisionBlock;
+
 
     void Start()
     {
@@ -47,6 +51,8 @@ public class NewEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         PlayerScript = player.transform.GetComponent<Player>();
+        thisCollider = GetComponent<CapsuleCollider>();
+        foreach (Transform child in this.gameObject.GetComponent<Transform>()) if (child.CompareTag("Vision Block")) VisionBlock = child.gameObject;
         ShootTime = ShootInterval;
         GotoNextPoint(); //Ganga að næstu staðsetningu
     }
@@ -104,7 +110,7 @@ public class NewEnemy : MonoBehaviour
         destPoint = (destPoint + 1) % Waypoints.Length;
     }
 
-    void ChasePlayer() //Eltir spilarann
+    public void ChasePlayer() //Eltir spilarann
     {
         agent.destination = player.position; //Eltir spilarann
         agent.speed = RunningSpeed;
@@ -162,8 +168,15 @@ public class NewEnemy : MonoBehaviour
 
     public void Dead()
     {
+        // Triggera death animation
         Anim.SetTrigger("Dead");
-        Destroy(gameObject.GetComponent<CapsuleCollider>());
+
+        // Stoppa vörðinn frá því að hreyfa sig eftir að deyja
+        Anim.SetBool("Shooting", false);
+
+        // Eyða öllu functionalityinu á verðinum
+        Destroy(VisionBlock);
+        Destroy(thisCollider);
         Destroy(agent);
         Destroy(this);
     }

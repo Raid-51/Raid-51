@@ -27966,6 +27966,40 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1644109028}
+    - target: {fileID: 1706227524, guid: 4e22c6186ef9f2c498e330de1b86d16e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030536485384200178, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030536485383701456, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030536485383701456, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1489
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030536485383701456, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030536485384200190, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163941468421176944, guid: 4e22c6186ef9f2c498e330de1b86d16e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e22c6186ef9f2c498e330de1b86d16e, type: 3}
 --- !u!1001 &904760405
@@ -48471,7 +48505,7 @@ PrefabInstance:
     - target: {fileID: 7572571223943016414, guid: 599c27a9180280f4fa2dceb918678ea0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.96
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 7572571223943016414, guid: 599c27a9180280f4fa2dceb918678ea0,
         type: 3}
@@ -48481,7 +48515,7 @@ PrefabInstance:
     - target: {fileID: 7572571223943016414, guid: 599c27a9180280f4fa2dceb918678ea0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.86
+      value: -56.6
       objectReference: {fileID: 0}
     - target: {fileID: 7572571223943016414, guid: 599c27a9180280f4fa2dceb918678ea0,
         type: 3}
@@ -54535,7 +54569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNumber: 1
-  SpawnName: Bunker one enter spawn
+  SpawnName: 
   InteractionTextID: 6
   Locked: 0
 --- !u!65 &1812339825

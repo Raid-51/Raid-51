@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
 
     private ItemDatabase ItemD;
     private SwitchSceneManager SSM;
-    private Transform DropPoint;
+    public Transform DropPoint;
 
     public int Scroll = 0; //Hvaða slot er highlightað
 

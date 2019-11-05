@@ -32,19 +32,13 @@ public class GunController : MonoBehaviour
                 if (hit.collider.tag == "Enemy")
                 {
                     GameObject enemyHit = hit.collider.gameObject;
-                    Enemy enemyHitScript = enemyHit.GetComponent<Enemy>();
+                    NewEnemy enemyHitScript = enemyHit.GetComponent<NewEnemy>();
 
                     enemyHitScript.Health -= gunDamage;
 
-                    if (enemyHitScript.Health <= 0)
-                    {
-                        enemyHitScript.Dead = true;
-                    }
-
-                    else
-                    {
-                        enemyHitScript.ChasePlayer();
-                    }
+                    // Tékka hvort að óvinurinn eigi að deyja
+                    if (enemyHitScript.Health <= 0) enemyHitScript.Dead();
+                    else enemyHitScript.ChasePlayer();
                 }
             }
         }
