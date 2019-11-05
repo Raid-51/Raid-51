@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
             RaycastHit hit;
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, layerMask))
+            if (Physics.Raycast(ray, out hit, gunRange))
             {
                 //Ef það hittir óvin
                 if (hit.collider.tag == "Enemy")
