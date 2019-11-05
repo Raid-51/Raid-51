@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531107031553381995}
   - component: {fileID: 531107031553382004}
+  - component: {fileID: 158519949561153195}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -63,3 +64,19 @@ MonoBehaviour:
     ObjectIcon: {fileID: 21300000, guid: 1eaa28d333e388d4cadaef3b36324d1e, type: 3}
     ObjectPrefab: {fileID: 9200101467558166506, guid: 5e81073885b0b5947a84c46a675194b1,
       type: 3}
+--- !u!114 &158519949561153195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531107031553382005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37be560d9363dc04e9079bcdc450336e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllPickups: []
+  NextSpawnLocationName: 
+  LastSceneHealth: 100
+  LastSceneStamina: 100

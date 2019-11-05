@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1706227526}
   - component: {fileID: 1481204082}
   - component: {fileID: 1481204083}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Vision block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2330,7 +2330,7 @@ GameObject:
   - component: {fileID: 1550602585228694084}
   m_Layer: 0
   m_Name: NewEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2423,6 +2423,7 @@ MonoBehaviour:
   Health: 100
   WalkingSpeed: 3
   RunningSpeed: 6
+  dead: 0
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}

@@ -7,14 +7,19 @@ using UnityEngine.UI;
 public class SwitchSceneDoor : MonoBehaviour
 {
     public int SceneNumber;
+    public string SpawnName;
     public int InteractionTextID;
     public bool Locked = true;
 
     private GameObject IFGameObject;
+    private SwitchSceneManager SSM;
+    private Player player;
 
     void Start()
     {
         IFGameObject = GameObject.FindGameObjectWithTag("Interface");
+        SSM = GameObject.FindGameObjectWithTag("GameController").GetComponent<SwitchSceneManager>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public void SwitchScene()
@@ -30,6 +35,11 @@ public class SwitchSceneDoor : MonoBehaviour
             if (Pickupable.scene.buildIndex != -1)
                 DontDestroyOnLoad(Pickupable);
         }
+
+        if (SpawnName != "") SSM.NextSpawnLocationName = SpawnName;
+
+        SSM.LastSceneHealth = player.Health;
+        SSM.LastSceneStamina = player.Stamina;
 
         SceneManager.LoadScene(SceneNumber);
     }

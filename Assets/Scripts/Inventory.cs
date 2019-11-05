@@ -25,7 +25,8 @@ public class Inventory : MonoBehaviour
     public Toggle ItemToggle3;
 
     private ItemDatabase ItemD;
-    private Transform DropPoint;
+    private SwitchSceneManager SSM;
+    public Transform DropPoint;
 
     public int Scroll = 0; //Hvaða slot er highlightað
 
@@ -40,12 +41,22 @@ public class Inventory : MonoBehaviour
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
+        SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
 
-        // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        // Eyða öllum pickupable hlutunum sem byrjuðu í sceninu en eiga ekki að vera lengur því að leikurinn er að geyma þá
         foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
         {
-            if (Pickupable.GetComponent<Object>().SceneNumber == SceneManager.GetActiveScene().buildIndex)
+            if ( !SSM.AllPickups.Contains(Pickupable) )
+                Destroy(Pickupable);
+        }
+
+        // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
+        foreach (GameObject Pickupable in SSM.AllPickups)
+        {
+            if (Pickupable.GetComponent<Object>().SceneNumber == currentScene)
                 Pickupable.SetActive(true);
             else
                 Pickupable.SetActive(false);
@@ -133,26 +144,32 @@ public class Inventory : MonoBehaviour
         //Ef slot 1 er highlightað
         if (Scroll == 0)
         {
-            Instantiate(ItemD.Items[itemID1].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
+            GameObject droppedItem = Instantiate(ItemD.Items[itemID1].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID1 = 0;
             ItemIcon1.sprite = ItemD.Items[0].ObjectIcon;
+            SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
         //Ef slot 2 er highlightað
         if (Scroll == 1)
         {
-            Instantiate(ItemD.Items[itemID2].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
+            GameObject droppedItem = Instantiate(ItemD.Items[itemID2].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID2 = 0;
             ItemIcon2.sprite = ItemD.Items[0].ObjectIcon;
+            SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
         //Ef slot 3 er highlightað
         if (Scroll == 2)
         {
-            Instantiate(ItemD.Items[itemID3].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
+            GameObject droppedItem = Instantiate(ItemD.Items[itemID3].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID3 = 0;
             ItemIcon3.sprite = ItemD.Items[0].ObjectIcon;
+            SSM.AllPickups.Add(droppedItem);
+            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
         }
     }
     //public void FillSlot(int slotID, int objectID)

@@ -7,6 +7,7 @@ public class Menus : MonoBehaviour
 {
     [Header("Pause")]
     public GameObject PauseMenu;
+    public bool disablePauseScreen;
     private bool Paused;
 
     [Header("Death")]
@@ -26,7 +27,7 @@ public class Menus : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause") && disablePauseScreen == false)
             if (!Paused) PauseAndUnPause(true);
 
         if (!immortal)
