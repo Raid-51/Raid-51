@@ -33,7 +33,6 @@ public class Inventory : MonoBehaviour
     public bool Fullinventory;
 
     public GameObject GunController;
-    private GameObject currentGunController;
 
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
     void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
@@ -118,12 +117,6 @@ public class Inventory : MonoBehaviour
             itemID3 = objectid;
             ItemIcon3.sprite = ItemD.Items[objectid].ObjectIcon;
         }
-
-        // Ef hluturinn sem er verið að taka upp er pistolin, búðu til object sem heldur gun scriptuna
-        //if (objectid == 3)
-        //{
-         //   currentGunController = Instantiate(GunController);
-        //}
     }
     //Skilar til baka hvaða hlutur er í highlight-aða slot-inu
     public int CurrentItemID()
