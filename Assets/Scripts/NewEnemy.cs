@@ -43,7 +43,7 @@ public class NewEnemy : MonoBehaviour
     private Animator Anim;
     private Player PlayerScript;
     private Collider thisCollider;
-    private GameObject VisionBlock;
+    public GameObject VisionBlock;
 
 
     void Start()
@@ -53,7 +53,6 @@ public class NewEnemy : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         PlayerScript = player.transform.GetComponent<Player>();
         thisCollider = GetComponent<CapsuleCollider>();
-        foreach (Transform child in this.gameObject.GetComponent<Transform>()) if (child.CompareTag("Vision Block")) VisionBlock = child.gameObject;
         ShootTime = ShootInterval;
         GotoNextPoint(); //Ganga að næstu staðsetningu
     }

@@ -45,3 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunRange: 500
   gunDamage: 20
+  Mask:
+    serializedVersion: 2
+    m_Bits: 1847

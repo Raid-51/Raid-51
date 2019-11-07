@@ -120,10 +120,10 @@ public class Inventory : MonoBehaviour
         }
 
         // Ef hluturinn sem er verið að taka upp er pistolin, búðu til object sem heldur gun scriptuna
-        if (objectid == 3)
-        {
-            currentGunController = Instantiate(GunController);
-        }
+        //if (objectid == 3)
+        //{
+         //   currentGunController = Instantiate(GunController);
+        //}
     }
     //Skilar til baka hvaða hlutur er í highlight-aða slot-inu
     public int CurrentItemID()
