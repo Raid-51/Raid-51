@@ -456,7 +456,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.014450073, y: 0.08394766, z: 0.13158417}
+  m_Size: {x: 0.02890014, y: 0.10562277, z: 0.15470432}
   m_Center: {x: -0.00005340576, y: 0.04416442, z: 0.0004119873}
 --- !u!54 &2946457800076404946
 Rigidbody:
@@ -488,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectName: Pistol
   ObjectID: 3
+  SceneNumber: 0
 --- !u!1 &567534718770035956
 GameObject:
   m_ObjectHideFlags: 0
