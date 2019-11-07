@@ -7,6 +7,8 @@ public class GunController : MonoBehaviour
     public int gunRange;
     public int gunDamage;
 
+    public LayerMask Mask;
+
     private GameObject player;
     private Camera playerCamera;
     private Inventory INV;
@@ -23,15 +25,16 @@ public class GunController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && INV.CurrentItemID() == 3)
         {
-            int layerMask = ~(1 << 11);
             RaycastHit hit;
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, gunRange))
+            if (Physics.Raycast(ray, out hit, 20, Mask))
             {
                 //Ef það hittir óvin
                 if (hit.collider.tag == "Enemy")
                 {
+                    print("Owch");
+
                     GameObject enemyHit = hit.collider.gameObject;
                     NewEnemy enemyHitScript = enemyHit.GetComponent<NewEnemy>();
 

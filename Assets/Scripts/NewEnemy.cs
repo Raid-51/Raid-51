@@ -13,6 +13,7 @@ public class NewEnemy : MonoBehaviour
     public bool dead = false;
 
     [Space]
+    public bool Walking = true;
     public Transform[] Waypoints; //Geymir staðsetningarnar sem hann á að labba á milli
 
     [Header("Sight")]
@@ -42,7 +43,7 @@ public class NewEnemy : MonoBehaviour
     private Animator Anim;
     private Player PlayerScript;
     private Collider thisCollider;
-    private GameObject VisionBlock;
+    public GameObject VisionBlock;
 
 
     void Start()
@@ -52,14 +53,13 @@ public class NewEnemy : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         PlayerScript = player.transform.GetComponent<Player>();
         thisCollider = GetComponent<CapsuleCollider>();
-        foreach (Transform child in this.gameObject.GetComponent<Transform>()) if (child.CompareTag("EnemyVisionBlock")) VisionBlock = child.gameObject;
         ShootTime = ShootInterval;
         GotoNextPoint(); //Ganga að næstu staðsetningu
     }
 
     void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f) //Ef hann er kominn nógu nálægt staðsetningunni þá fer hann að næsta
+        if (!agent.pathPending && agent.remainingDistance < 0.5f && Walking) //Ef hann er kominn nógu nálægt staðsetningunni þá fer hann að næsta
             GotoNextPoint();
 
         if (Vector3.Distance(SightPoint.transform.position, player.position) <= SightRange)
@@ -104,10 +104,22 @@ public class NewEnemy : MonoBehaviour
 
     void GotoNextPoint() //Ef hann er kominn að punkt þá skiptir hann yfir í næsta punkt
     {
-        if (Waypoints.Length == 0)
-            return;
-        agent.destination = Waypoints[destPoint].position;
-        destPoint = (destPoint + 1) % Waypoints.Length;
+        if (Walking)
+        {
+            if (Waypoints.Length == 0)
+                return;
+            agent.destination = Waypoints[destPoint].position;
+            destPoint = (destPoint + 1) % Waypoints.Length;
+        }
+        else
+        {
+            if(agent.remainingDistance > 0.5f)
+                agent.destination = Waypoints[0].position;
+            else
+            {
+                agent.isStopped = true;
+            }
+        }
     }
 
     public void ChasePlayer() //Eltir spilarann
