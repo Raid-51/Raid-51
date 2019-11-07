@@ -2424,7 +2424,10 @@ MonoBehaviour:
   WalkingSpeed: 3
   RunningSpeed: 6
   dead: 0
+  Walking: 1
   Waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   SightRange: 5
