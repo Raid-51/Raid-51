@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
 
     public bool Fullinventory;
 
-    public GameObject GunController;
+    public Hand HandScript;
 
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
     void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
@@ -104,18 +104,21 @@ public class Inventory : MonoBehaviour
         {
             itemID1 = objectid;
             ItemIcon1.sprite = ItemD.Items[objectid].ObjectIcon;
+            HandScript.AddItem(objectid, 1);
         }
         //Annars ef slot 2 er tómt þá fer hluturinn inn í það
         else if (itemID2 == 0)
         {
             itemID2 = objectid;
             ItemIcon2.sprite = ItemD.Items[objectid].ObjectIcon;
+            HandScript.AddItem(objectid, 2);
         }
         //Annars ef slot 3 er tómt þá fer hluturinn inn í það
         else if (itemID3 == 0)
         {
             itemID3 = objectid;
             ItemIcon3.sprite = ItemD.Items[objectid].ObjectIcon;
+            HandScript.AddItem(objectid, 3);
         }
     }
     //Skilar til baka hvaða hlutur er í highlight-aða slot-inu
