@@ -30,12 +30,6 @@ public class SwitchSceneDoor : MonoBehaviour
         if (IFGameObject.scene.buildIndex != -1)
             DontDestroyOnLoad(IFGameObject);
 
-        foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
-        {
-            if (Pickupable.scene.buildIndex != -1)
-                DontDestroyOnLoad(Pickupable);
-        }
-
         if (SpawnName != "") SSM.NextSpawnLocationName = SpawnName;
 
         SSM.LastSceneHealth = player.Health;

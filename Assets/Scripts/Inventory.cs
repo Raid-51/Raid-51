@@ -43,24 +43,6 @@ public class Inventory : MonoBehaviour
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
-
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-
-        // Eyða öllum pickupable hlutunum sem byrjuðu í sceninu en eiga ekki að vera lengur því að leikurinn er að geyma þá
-        foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
-        {
-            if ( !SSM.AllPickups.Contains(Pickupable) )
-                Destroy(Pickupable);
-        }
-
-        // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
-        foreach (GameObject Pickupable in SSM.AllPickups)
-        {
-            if (Pickupable.GetComponent<Object>().SceneNumber == currentScene)
-                Pickupable.SetActive(true);
-            else
-                Pickupable.SetActive(false);
-        }
     }
 
     void Update()
@@ -150,6 +132,7 @@ public class Inventory : MonoBehaviour
             ItemIcon1.sprite = ItemD.Items[0].ObjectIcon;
             SSM.AllPickups.Add(droppedItem);
             droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
+            DontDestroyOnLoad(droppedItem);
         }
         //Ef slot 2 er highlightað
         if (Scroll == 1)
