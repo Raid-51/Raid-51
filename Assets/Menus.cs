@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
+    //Pásuskjár
     [Header("Pause")]
     public GameObject PauseMenu;
     public bool disablePauseScreen;
     private bool Paused;
 
+    //Dauðaskjár
     [Header("Death")]
     public GameObject DeathMenu;
     public bool immortal;
@@ -18,9 +20,9 @@ public class Menus : MonoBehaviour
     private Player PlayerScript;
     private CameraLook Cam;
 
+    //Save-ar menu-in, virkar sem Start
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
     void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
-
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         PlayerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
@@ -30,20 +32,22 @@ public class Menus : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause") && disablePauseScreen == false)
+        //Ef spilarinn lokar pásuskjánum eða ýtir á esc, þá byrjar leikurinn aftur
+        if (Input.GetButtonDown("Pause") && disablePauseScreen == false) 
             if (!Paused) PauseAndUnPause(true);
 
-        if (!immortal)
+        if (!immortal) //Fyrir debugging svo að spilarinn séi ekki að deyja endalaust
         {
             if (PlayerScript.Health <= 0)
                 StartCoroutine(Dead());
         }
     }
+    //Pásar of af-pásar leiknum
     public void PauseAndUnPause(bool hmm)
     {
         Time.timeScale = 1;
         Paused = hmm;
-        if (Paused)
+        if (Paused) //Ef það er pása þá frystir það allt
         {
             Time.timeScale = 0;
             if (!IsDead) PauseMenu.SetActive(true);
@@ -52,7 +56,7 @@ public class Menus : MonoBehaviour
             PlayerScript.enabled = false;
             Cam.enabled = false;
         }
-        else
+        else //Ef það er ekki pása þá af-frystir það allt
         {
             Time.timeScale = 1;
             PauseMenu.SetActive(false);
@@ -63,22 +67,22 @@ public class Menus : MonoBehaviour
         }
     }
 
-    public void Restart()
+    public void Restart() //Restartar leiknum
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MainMenu()
+    public void MainMenu() //Fer í main menu (byrjunarskjáinn)
     {
 
     }
 
-    public void QuitGame()
+    public void QuitGame() //Hættir leiknum og slekkur á honum
     {
         Application.Quit();
     }
 
-    public IEnumerator Dead()
+    public IEnumerator Dead() //Ef spilarinn deyr, þá frystir það leikinn og sýnir dauðaskjáinn
     {
         IsDead = true;
         yield return new WaitForSeconds(0.1f);
