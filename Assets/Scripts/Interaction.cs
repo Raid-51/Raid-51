@@ -66,37 +66,38 @@ public class Interaction : MonoBehaviour
                     IF.Interacting(5); //Sýnir texta
                     if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við geimeruna (smellir á mús)
                     {
-                        hit.collider.GetComponent<Alien>().Run();
+                        hit.collider.GetComponent<Alien>().Run(); //Geymveran hleypur í burtu
                     }
                 }
             }
             //Ef það hittir hurð sem er hægt að opna
             else if (hit.collider.tag == "Door")
             {
-                if (INV.CurrentItemID() == 4)
+                if (INV.CurrentItemID() == 4) //Ef spilarinn heldur á keycard
                 {
                     IF.Interacting(1);
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hurðina (smellir á mús)
                     {
-                        hit.collider.GetComponent<Opendoor>().Open();
+                        hit.collider.GetComponent<Opendoor>().Open(); //hurðinn opnast
                     }
                 }
                 else
                     IF.Interacting(8);
             }
+            //Ef þetta er scenedoor (skiptir um scenes)
             else if (hit.collider.tag == "SwitchSceneDoor")
             {
                 SwitchSceneDoor SwitchDoor = hit.collider.gameObject.GetComponent<SwitchSceneDoor>();
 
-                if (SwitchDoor.Locked)
+                if (SwitchDoor.Locked) //En hún er læst þá er látið mann vita
                     IF.Interacting(9);
-                else
+                else //Annars
                 {
                     IF.Interacting(SwitchDoor.InteractionTextID);
 
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hurðina (smellir á mús)
                     {
-                        SwitchDoor.SwitchScene();
+                        SwitchDoor.SwitchScene(); //Skiptir um scene
                     }
                 }
             }
