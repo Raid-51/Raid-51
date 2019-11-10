@@ -23,10 +23,10 @@ public class GunController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && INV.CurrentItemID() == 3)
+        if (Input.GetMouseButtonDown(0) && INV.CurrentItemID() == 3) //Ef spilarinn er ða halda á byssu
         {
             RaycastHit hit;
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); //Skýtur raycast í miðju skjáar
 
             if (Physics.Raycast(ray, out hit, 20, Mask))
             {
@@ -38,7 +38,7 @@ public class GunController : MonoBehaviour
                     GameObject enemyHit = hit.collider.gameObject;
                     NewEnemy enemyHitScript = enemyHit.GetComponent<NewEnemy>();
 
-                    enemyHitScript.Health -= gunDamage;
+                    enemyHitScript.Health -= gunDamage; //Tekur líf af enemy-inum
 
                     // Tékka hvort að óvinurinn eigi að deyja
                     if (enemyHitScript.Health <= 0) enemyHitScript.Dead();
