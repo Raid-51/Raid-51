@@ -13,7 +13,7 @@ public class NewEnemy : MonoBehaviour
     public bool dead = false;
 
     [Space]
-    public bool Walking = true;
+    public bool Walking = true; //á hann að standa eða labba?
     public Transform[] Waypoints; //Geymir staðsetningarnar sem hann á að labba á milli
 
     [Header("Sight")]
@@ -62,12 +62,12 @@ public class NewEnemy : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance < 0.5f && Walking) //Ef hann er kominn nógu nálægt staðsetningunni þá fer hann að næsta
             GotoNextPoint();
 
-        if (Vector3.Distance(SightPoint.transform.position, player.position) <= SightRange)
+        if (Vector3.Distance(SightPoint.transform.position, player.position) <= SightRange) //Ef spilarinn er nógu nálægt
         {
             RaycastHit hit;
-            if (Physics.Linecast(SightPoint.transform.position, new Vector3(player.position.x, player.position.y + 1f, player.position.z), out hit))
+            if (Physics.Linecast(SightPoint.transform.position, new Vector3(player.position.x, player.position.y + 1f, player.position.z), out hit)) //Skýtur linecast að spilaranum
             {
-                if (hit.collider.tag == "Player")
+                if (hit.collider.tag == "Player") //Ef það hittir spilarann þá byrjar hann að elta hann
                 {
                     SeenPlayer = true;
                     stoptime = TimeTilUninterested;
@@ -104,14 +104,14 @@ public class NewEnemy : MonoBehaviour
 
     void GotoNextPoint() //Ef hann er kominn að punkt þá skiptir hann yfir í næsta punkt
     {
-        if (Walking)
+        if (Walking) //Ef hann á að labba
         {
             if (Waypoints.Length == 0)
                 return;
             agent.destination = Waypoints[destPoint].position;
             destPoint = (destPoint + 1) % Waypoints.Length;
         }
-        else
+        else //Ef hann á að vera kyrr
         {
             if(agent.remainingDistance > 0.5f)
                 agent.destination = Waypoints[0].position;
@@ -178,7 +178,7 @@ public class NewEnemy : MonoBehaviour
         }
     }
 
-    public void Dead()
+    public void Dead() //Þegar hann deyr
     {
         // Triggera death animation
         Anim.SetTrigger("Dead");

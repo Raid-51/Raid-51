@@ -25,18 +25,22 @@ public class SwitchSceneManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);// Passa að objectinum sé ekki eytt
     }
 
+    // Þetta passar að CustomStart sé ekki keyrt þegar objectinn er deactivataður
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
     void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
 
     // Þetta keyrir í hvert sinn sem það er skipt um scene
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
-        // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann
+        // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann, annars eyðir þetta öllum pickupable hlutunum
         if ( !CollectedItemsFromScene.Contains(scene.buildIndex) ) {
 
+            // Passa að það verði ekki bætt hlutunum úr þessu scene-i í AllPickups aftur
             CollectedItemsFromScene.Add(scene.buildIndex);
 
+            // Bæta öllum hlutunum með tagið Object við í AllPickups listann og passa að þeim verði ekki eytt þegar það er skipt um scene.
             foreach (GameObject Pickup in GameObject.FindGameObjectsWithTag("Object"))
+                // Þetta gerist bara ef hluturinn er ekki í Don't Destroy On Load núþegar
                 if (Pickup.scene.buildIndex != -1)
                 {
                     AllPickups.Add(Pickup);
@@ -56,6 +60,7 @@ public class SwitchSceneManager : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         foreach (GameObject Pickupable in AllPickups)
         {
+            // Ef hluturinn segir að hann eigi að vera í þessu scenei þá er hann activataður, annars er hann deactivataður
             if (Pickupable.GetComponent<Object>().SceneNumber == currentScene)
             {
                 // Færa hlutinn aðeins upp svo að hann detti ekki í gegnum terrainið
@@ -72,7 +77,7 @@ public class SwitchSceneManager : MonoBehaviour
         // Finna spilarann til þess að gefa honum rétt líf og stamina og líka til þess að mögulega hreyfa hann
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName
+        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName
         if (NextSpawnLocationName != "") {
             Transform playerTransform = player.gameObject.GetComponent<Transform>();
             Transform teleportTransform = GameObject.Find(NextSpawnLocationName).GetComponent<Transform>();
@@ -80,6 +85,7 @@ public class SwitchSceneManager : MonoBehaviour
             playerTransform.position = teleportTransform.position;
             playerTransform.rotation = teleportTransform.rotation;
 
+            // Hreinsa NextSpawnLocationName
             NextSpawnLocationName = "";
         }
 

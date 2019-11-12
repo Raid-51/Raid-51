@@ -6,13 +6,13 @@ using UnityEngine.AI;
 public class Alien : MonoBehaviour
 {
     public Animator Anim;
-    public Transform RunPos;
+    public Transform RunPos; //Staðsetningin sem geimveran á að hlaupa að
 
-    public bool Freed;
+    public bool Freed; //Er geimveran búin að vera frelsuð?
 
     private NavMeshAgent agent;
 
-    void Start()
+    void Start() //Er kyrr
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = RunPos.position;
@@ -21,13 +21,13 @@ public class Alien : MonoBehaviour
 
     void Update()
     {
-        if (agent.remainingDistance < 0.2f)
+        if (agent.remainingDistance < 0.2f) //Ef geimveran er komin að staðsetningunni þá eyðist hún
         {
             Destroy(this.gameObject);
         }
     }
 
-    public void Run()
+    public void Run() //Hleypur að stað að staðsetningunni
     {
         agent.isStopped = false;
         Anim.SetTrigger("Run");

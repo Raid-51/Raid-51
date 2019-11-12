@@ -8,5 +8,8 @@ public class Object : MonoBehaviour
     public string ObjectName;
     public int ObjectID;
     [Space]
+    [HideInInspector]
     public int SceneNumber;
+    [HideInInspector]
+    public bool Initialized;
 }

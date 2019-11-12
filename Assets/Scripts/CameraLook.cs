@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraLook : MonoBehaviour
 {
     [Header("Sensativity")]
-    public float Sensitivity = 5;
+    public float Sensitivity = 5; //hraði myndavélarinnar
 
     [Header("Limits")]
     public float LimitY = 60F;
@@ -25,33 +25,34 @@ public class CameraLook : MonoBehaviour
 
     void Update()
     {
-        float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity;
+        float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Sensitivity; //Nær í hraða sem spilarinn fer til hægri og vinstri
 
-        rotationY += Input.GetAxis("Mouse Y") * Sensitivity;
-        rotationY = Mathf.Clamp(rotationY, -LimitY, LimitY);
+        rotationY += Input.GetAxis("Mouse Y") * Sensitivity; //Nær í hraða sem spilarinn fer til up og niður
+        rotationY = Mathf.Clamp(rotationY, -LimitY, LimitY); //Stoppar myndavélina að snúast of langt upp eða niður
 
-        transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
+        transform.localEulerAngles = new Vector3(-rotationY, 0, 0); //Snýr myndavélinni
 
         //if (Input.GetKeyDown(KeyCode.Escape))
             //UnlockCursor();
         //if (Input.GetMouseButtonDown(0))
             //LockCursor();
 
-        RotateCharacter();
+        RotateCharacter(); //Snýr spilaranum
 
     }
-
+    //Læsir músinni í miðju skjáss
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    //Aflæsir músinni
     public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
+    //Snýr spilaranum með myndavélinni
     void RotateCharacter()
     {
         Vector2 vec = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")); //Nær í staðsetningu músarinar

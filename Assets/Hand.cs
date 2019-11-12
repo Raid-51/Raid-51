@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public Transform HandPos;
+    public Transform HandPos; //Staðsetning handar
     
+    //Inventory plássin, geymir hlutina í höndinni
     [Space]
     public GameObject Slot1;
     public GameObject Slot2;
@@ -19,10 +20,11 @@ public class Hand : MonoBehaviour
     private BoxCollider[] boxc;
     private Object[] obj;
 
-    public bool disablescript;
+    public bool disablescript; //Skriptin er ókláruð, svo það er disable-að á stundinni
 
     void Update()
     {
+        //Ef spilarinn skiptir um inventory slot þá skiptist hluturinn í höndinni líka
         if (INV.Scroll == 0)
             ShowItem(true, false, false);
         else if (INV.Scroll == 1)
@@ -31,35 +33,36 @@ public class Hand : MonoBehaviour
             ShowItem(false, false, true);
     }
 
-    public void RemoveItem()
+    public void RemoveItem() //tekur hlut úr höndinni ef spilarinn droppar hlutinum
     {
         
     }
 
-    public void AddItem(int id, int slot)
+    public void AddItem(int id, int slot) //Setur hlut í höndina ef spilarinn tekur hann upp
     {
         if (!disablescript)
         {
-            if (slot == 1)
+            if (slot == 1) //Setur hlutinn í slot 1
             {
                 Slot1 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
                 Slot1.transform.SetParent(HandPos.transform);
             }
-            if (slot == 2)
+            if (slot == 2) //Setur hlutinn í slot 2
             {
                 Slot2 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
                 Slot2.transform.SetParent(HandPos.transform);
             }
-            if (slot == 3)
+            if (slot == 3) //Setur hlutinn í slot 3
             {
                 Slot3 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
                 Slot3.transform.SetParent(HandPos.transform);
             }
 
-            StaticItem();
+            StaticItem(); //Lætur hlutinn vera fastan
         }
     }
-
+    
+    //Sýnir hlutinn ú höndinni
     void ShowItem(bool s1, bool s2, bool s3)
     {
         if (!disablescript)
@@ -70,6 +73,7 @@ public class Hand : MonoBehaviour
         }
     }
 
+    //Lætur hlutinn vera fastan með því að eyða rigifbody, boxcollider og object skriptinni
     void StaticItem()
     {
         //rbs = FindObjectOfType<Rigidbody>();
