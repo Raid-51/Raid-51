@@ -29,7 +29,7 @@ public class ObjectInspector : Editor
             SceneName = SceneManager.GetSceneByBuildIndex(pickupScript.SceneNumber).name;// Uppfæra SceneName
 
         // Eitt línubil
-        GUILayout.Space(GUILayout.Height(EditorGUIUtility.singleLineHeight));
+        GUILayout.Space(EditorGUIUtility.singleLineHeight);
         // Gera Scene Name barinn
         EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Scene Name", GUILayout.Width(EditorGUIUtility.labelWidth));
