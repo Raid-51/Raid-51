@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System;
 
 [CustomEditor(typeof(Object))]
 public class ObjectInspector : Editor
@@ -18,10 +19,18 @@ public class ObjectInspector : Editor
         Object pickupScript = (Object)target;
 
         // Þetta stillir scene númerið automatically ef scenið sem game objectinn er í er ekki það sama og hann er skráður á
-        if (pickupScript.gameObject.scene.buildIndex != pickupScript.SceneNumber)
+        if (pickupScript.gameObject.scene.buildIndex != pickupScript.SceneNumber && pickupScript.gameObject.scene.buildIndex != -1)
         {
-            pickupScript.SceneNumber = pickupScript.gameObject.scene.buildIndex;// Upfæra SceneNumber á Object scriptunni
-            SceneName = SceneManager.GetSceneByBuildIndex(pickupScript.SceneNumber).name;// Uppfæra SceneName
+            try
+            {
+                pickupScript.SceneNumber = pickupScript.gameObject.scene.buildIndex;// Upfæra SceneNumber á Object scriptunni
+                SceneName = SceneManager.GetSceneByBuildIndex(pickupScript.SceneNumber).name;// Uppfæra SceneName
+            }
+            catch (ArgumentException)
+            {
+                SceneName = "Scene not found";
+            }
+            
         }
 
         // Passa að það sé eitthvað í Scene Name barinum
