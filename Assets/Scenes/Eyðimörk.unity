@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44563997, g: 0.49533248, b: 0.57418966, a: 1}
+  m_IndirectSpecularColor: {r: 0.4456405, g: 0.4953329, b: 0.5741902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -755,7 +755,7 @@ PrefabInstance:
     - target: {fileID: 9200101467558166510, guid: 5e81073885b0b5947a84c46a675194b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005
+      value: 0.031
       objectReference: {fileID: 0}
     - target: {fileID: 9200101467558166510, guid: 5e81073885b0b5947a84c46a675194b1,
         type: 3}
@@ -8937,11 +8937,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8046549614113823401, guid: e3f20c8b793e82b4dba22c6232914df2,
-        type: 3}
-      propertyPath: disablePauseScreen
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4198953785316596801, guid: e3f20c8b793e82b4dba22c6232914df2,
         type: 3}
       propertyPath: m_IsActive
@@ -12238,7 +12233,7 @@ PrefabInstance:
     - target: {fileID: 4258588778313655429, guid: ac2dab0e93880f041bb25a02bad5c493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1000005
+      value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: 4258588778313655429, guid: ac2dab0e93880f041bb25a02bad5c493,
         type: 3}
@@ -46814,12 +46809,12 @@ PrefabInstance:
     - target: {fileID: 4258588778313655429, guid: ac2dab0e93880f041bb25a02bad5c493,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.100000024
+      value: 0.128
       objectReference: {fileID: 0}
     - target: {fileID: 4258588778313655429, guid: ac2dab0e93880f041bb25a02bad5c493,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.403656
+      value: -4.528
       objectReference: {fileID: 0}
     - target: {fileID: 4258588778313655429, guid: ac2dab0e93880f041bb25a02bad5c493,
         type: 3}
@@ -46860,6 +46855,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258588778313655430, guid: ac2dab0e93880f041bb25a02bad5c493,
+        type: 3}
+      propertyPath: SceneNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258588778313655430, guid: ac2dab0e93880f041bb25a02bad5c493,
+        type: 3}
+      propertyPath: Initialized
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac2dab0e93880f041bb25a02bad5c493, type: 3}
@@ -66352,7 +66357,7 @@ PrefabInstance:
     - target: {fileID: 567534718769864908, guid: 88f815cab012f0b4facdc2ac9a184231,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01999998
+      value: 0.043
       objectReference: {fileID: 0}
     - target: {fileID: 567534718769864908, guid: 88f815cab012f0b4facdc2ac9a184231,
         type: 3}

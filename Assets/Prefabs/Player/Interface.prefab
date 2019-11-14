@@ -2701,7 +2701,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 1731972040}
   disablePauseScreen: 0
   DeathMenu: {fileID: 603266971661660751}
-  immortal: 1
+  immortal: 0
 --- !u!1 &4198953787026063510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,10 +2848,10 @@ MonoBehaviour:
   itemID3: 0
   ItemIcon3: {fileID: 4198953787253538269}
   ItemToggle3: {fileID: 4198953786345369919}
+  DropPoint: {fileID: 0}
   Scroll: 0
   Fullinventory: 0
-  GunController: {fileID: 7576157070633605719, guid: 4d10d2dd13e4b2d49985b98b237d9893,
-    type: 3}
+  HandScript: {fileID: 0}
 --- !u!1 &4198953787253538271
 GameObject:
   m_ObjectHideFlags: 0
