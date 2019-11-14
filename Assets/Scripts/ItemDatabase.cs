@@ -12,6 +12,7 @@ public class ItemDatabase : MonoBehaviour
         public string ObjectName;
         public Sprite ObjectIcon;
         public GameObject ObjectPrefab;
+        public GameObject HandPrefab;
     }
 
     public item[] Items; //Hlutirnir

@@ -120,55 +120,42 @@ public class Inventory : MonoBehaviour
     public void ClearSlot()
     {
         //Ef slot 1 er highlightað
-        if (Scroll == 0)
+        if (Scroll == 0 && itemID1 != 0)
         {
             GameObject droppedItem = Instantiate(ItemD.Items[itemID1].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID1 = 0;
             ItemIcon1.sprite = ItemD.Items[0].ObjectIcon;
-            SSM.AllPickups.Add(droppedItem);
-            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
-            DontDestroyOnLoad(droppedItem);
+            HandScript.RemoveItem(1);
+            SaveNclear(droppedItem);
+
         }
         //Ef slot 2 er highlightað
-        if (Scroll == 1)
+        if (Scroll == 1 && itemID2 != 0)
         {
             GameObject droppedItem = Instantiate(ItemD.Items[itemID2].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID2 = 0;
             ItemIcon2.sprite = ItemD.Items[0].ObjectIcon;
-            SSM.AllPickups.Add(droppedItem);
-            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
+            HandScript.RemoveItem(2);
+            SaveNclear(droppedItem);
         }
         //Ef slot 3 er highlightað
-        if (Scroll == 2)
+        if (Scroll == 2 && itemID3 != 0)
         {
             GameObject droppedItem = Instantiate(ItemD.Items[itemID3].ObjectPrefab, DropPoint.position, DropPoint.rotation); //Setur hlutinn aftur í veröldina fyrir framan spilaran
             //Hreynsar inventory slot-ið
             itemID3 = 0;
             ItemIcon3.sprite = ItemD.Items[0].ObjectIcon;
-            SSM.AllPickups.Add(droppedItem);
-            droppedItem.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
+            HandScript.RemoveItem(3);
+            SaveNclear(droppedItem);
         }
     }
-    //public void FillSlot(int slotID, int objectID)
-    //{
-    //    if (slotID == 1)
-    //    {
-    //        itemID1 = objectID;
-    //        ItemIcon1.sprite = ItemD.Items[objectID].ObjectIcon;
-    //    }
-        
-    //    else if (slotID == 2)
-    //    {
-    //        itemID2 = objectID;
-    //        ItemIcon2.sprite = ItemD.Items[objectID].ObjectIcon;
-    //    }
 
-    //    else if (slotID == 3)
-    //    {
-    //        itemID3 = objectID;
-    //        ItemIcon3.sprite = ItemD.Items[objectID].ObjectIcon;
-    //    }
-    //}
+    void SaveNclear(GameObject dropI)
+    {
+        SSM.AllPickups.Add(dropI);
+        dropI.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;
+        DontDestroyOnLoad(dropI);
+    }
 }
