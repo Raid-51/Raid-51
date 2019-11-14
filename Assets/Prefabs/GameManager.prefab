@@ -48,21 +48,30 @@ MonoBehaviour:
   - ObjectName: 
     ObjectIcon: {fileID: 21300000, guid: d298daec01415534da6f942ccf4181a1, type: 3}
     ObjectPrefab: {fileID: 0}
+    HandPrefab: {fileID: 0}
   - ObjectName: Box
     ObjectIcon: {fileID: 21300000, guid: 8cd5ff758a4c78e4b85fb04c090c07f0, type: 3}
     ObjectPrefab: {fileID: 4258588778313655425, guid: ac2dab0e93880f041bb25a02bad5c493,
+      type: 3}
+    HandPrefab: {fileID: 1849316021367592879, guid: 308ecc048cff77e4384cc49a523115ed,
       type: 3}
   - ObjectName: Bolt cutter
     ObjectIcon: {fileID: 21300000, guid: 252bcffd6536c524cbbeef7d695ea6ec, type: 3}
     ObjectPrefab: {fileID: 6768663648995930878, guid: c43c359adf25d3b48bea1e5c002ac5f0,
       type: 3}
+    HandPrefab: {fileID: 938243920338759809, guid: 7f99484a168e6584886d1335d66c5282,
+      type: 3}
   - ObjectName: Pistol
     ObjectIcon: {fileID: 21300000, guid: 59f354434dcf74348ab00574378a1ac8, type: 3}
     ObjectPrefab: {fileID: 567534718770035948, guid: 88f815cab012f0b4facdc2ac9a184231,
       type: 3}
+    HandPrefab: {fileID: 9104149081367805969, guid: c7e9052f92fac334e8b79362d4fedb8d,
+      type: 3}
   - ObjectName: Keycard
     ObjectIcon: {fileID: 21300000, guid: 1eaa28d333e388d4cadaef3b36324d1e, type: 3}
     ObjectPrefab: {fileID: 9200101467558166506, guid: 5e81073885b0b5947a84c46a675194b1,
+      type: 3}
+    HandPrefab: {fileID: 2426439025521515107, guid: df67aedba0a5a0541be54a911b4f467c,
       type: 3}
 --- !u!114 &158519949561153195
 MonoBehaviour:
@@ -77,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllPickups: []
+  CollectedItemsFromScene: 
   NextSpawnLocationName: 
   LastSceneHealth: 100
   LastSceneStamina: 100
