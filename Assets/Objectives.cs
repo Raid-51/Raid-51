@@ -15,6 +15,9 @@ public class Objectives : MonoBehaviour
     public int AliensRescued;
     public int MaxAliens;
 
+    [Space]
+    public Menus MenuScript;
+
     [System.Serializable]
     public class objctvs
     {
@@ -36,14 +39,20 @@ public class Objectives : MonoBehaviour
         AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
         Header.text = AllObjectives[CurrentObjective].ObjectiveName;
         Description.text = AllObjectives[CurrentObjective].ObjectiveDescription;
+        print(AllObjectives.Length);
     }
 
     public void ObjectiveFinished()
     {
-        AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
-        CurrentObjective += 1;
-        AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
-        Header.text = AllObjectives[CurrentObjective].ObjectiveName;
-        Description.text = AllObjectives[CurrentObjective].ObjectiveDescription;
+        if (CurrentObjective +1 >= AllObjectives.Length)
+            MenuScript.GameFinished();
+        else
+        {
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
+            CurrentObjective += 1;
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
+            Header.text = AllObjectives[CurrentObjective].ObjectiveName;
+            Description.text = AllObjectives[CurrentObjective].ObjectiveDescription;
+        }
     }
 }
