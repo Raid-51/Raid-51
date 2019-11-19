@@ -32,16 +32,16 @@ public class Inventory : MonoBehaviour
 
     public bool Fullinventory;
 
-    public Hand HandScript;
+    private Hand HandScript;
 
     //Virkar eins og Start, bara save-ar hluti
-    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
+    void Start() { SceneManager.sceneLoaded += CustomStart; }
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
+        HandScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Hand>();
     }
 
     void Update()

@@ -11,13 +11,29 @@ public class Hand : MonoBehaviour
     public GameObject Slot1;
     public GameObject Slot2;
     public GameObject Slot3;
+    public int Slot1ItemID = -1;
+    public int Slot2ItemID = -1;
+    public int Slot3ItemID = -1;
 
     [Space]
     public GameObject Placeholder;
 
-    [Header("Scripts")]
-    public Inventory INV;
-    public ItemDatabase ID;
+    private Inventory INV;
+    private ItemDatabase ID;
+
+    void Awake()
+    {
+        // Resetta Item IDin
+        Slot1ItemID = -1;
+        Slot2ItemID = -1;
+        Slot3ItemID = -1;
+    }
+
+    void Start()
+    {
+        INV = GameObject.FindGameObjectWithTag("Interface").GetComponentInChildren<Inventory>();
+        ID = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
+    }
 
     void Update()
     {
@@ -36,16 +52,19 @@ public class Hand : MonoBehaviour
         {
             Destroy(Slot1);
             Slot1 = Placeholder;
+            Slot1ItemID = -1;
         }
         if (slotno == 2)
         {
             Destroy(Slot2);
             Slot2 = Placeholder;
+            Slot2ItemID = -1;
         }
         if (slotno == 3)
         {
             Destroy(Slot3);
             Slot3 = Placeholder;
+            Slot3ItemID = -1;
         }
     }
 
@@ -54,16 +73,19 @@ public class Hand : MonoBehaviour
         if (slot == 1) //Setur hlutinn í slot 1
         {
             Slot1 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot1ItemID = id;
             ItemPlacement(Slot1);
         }
         if (slot == 2) //Setur hlutinn í slot 2
         {
             Slot2 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot2ItemID = id;
             ItemPlacement(Slot2);
         }
         if (slot == 3) //Setur hlutinn í slot 3
         {
             Slot3 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot3ItemID = id;
             ItemPlacement(Slot3);
         }
     }
