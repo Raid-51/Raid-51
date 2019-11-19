@@ -17,6 +17,10 @@ public class Menus : MonoBehaviour
     public bool immortal;
     private bool IsDead;
 
+    //Dauðaskjár
+    [Header("Finish")]
+    public GameObject FinishMenu;
+
     private Player PlayerScript;
     private CameraLook Cam;
 
@@ -87,6 +91,12 @@ public class Menus : MonoBehaviour
         IsDead = true;
         yield return new WaitForSeconds(0.1f);
         DeathMenu.SetActive(true);
+        PauseAndUnPause(true);
+    }
+
+    public void GameFinished()
+    {
+        FinishMenu.SetActive(true);
         PauseAndUnPause(true);
     }
 }
