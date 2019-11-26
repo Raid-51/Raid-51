@@ -8,9 +8,9 @@ public class Hand : MonoBehaviour
     
     //Inventory plássin, geymir hlutina í höndinni
     [Space]
-    public GameObject Slot1;
-    public GameObject Slot2;
-    public GameObject Slot3;
+    private GameObject Slot1;
+    private GameObject Slot2;
+    private GameObject Slot3;
     public int Slot1ItemID = -1;
     public int Slot2ItemID = -1;
     public int Slot3ItemID = -1;

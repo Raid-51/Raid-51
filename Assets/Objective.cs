@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Objective : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class Objective : MonoBehaviour
     private Objectives obctvs;
 
 
-    void Start()
+    void Start() { CustomStart(SceneManager.GetActiveScene(), SceneManager.GetActiveScene()); }
+    void OnEnable() { SceneManager.activeSceneChanged += CustomStart; }
+    void OnDisable() { SceneManager.activeSceneChanged -= CustomStart; }
+    void CustomStart(Scene newScene, Scene oldScene)
     {
         initialScale = transform.localScale;
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -34,6 +38,11 @@ public class Objective : MonoBehaviour
 
     void Update()
     {
+        if (Cam == null)
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            CustomStart(currentScene, currentScene);
+        }
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;
