@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class GunController : MonoBehaviour
     public int gunDamage;
 
     public LayerMask Mask;
+
+    [Space]
+    public GameObject Crosshair;
+    public GameObject AmmoText;
+    public Text AmmoTextAmount;
+    public int Ammo;
 
     private GameObject player;
     private Camera playerCamera;
@@ -23,28 +30,43 @@ public class GunController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && INV.CurrentItemID() == 3) //Ef spilarinn er ða halda á byssu
+        AmmoTextAmount.text = Ammo + "/10";
+
+        if (INV.CurrentItemID() == 3) //Ef spilarinn er ða halda á byssu
         {
-            RaycastHit hit;
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); //Skýtur raycast í miðju skjáar
+            Crosshair.SetActive(true);
+            AmmoText.SetActive(true);
 
-            if (Physics.Raycast(ray, out hit, 20, Mask))
+            if (Input.GetMouseButtonDown(0) && Ammo > 0)
             {
-                //Ef það hittir óvin
-                if (hit.collider.tag == "Enemy")
+                Ammo -= 1;
+
+                RaycastHit hit;
+                Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition); //Skýtur raycast í miðju skjáar
+
+                if (Physics.Raycast(ray, out hit, 20, Mask))
                 {
-                    print("Owch");
+                    //Ef það hittir óvin
+                    if (hit.collider.tag == "Enemy")
+                    {
+                        print("Owch");
 
-                    GameObject enemyHit = hit.collider.gameObject;
-                    NewEnemy enemyHitScript = enemyHit.GetComponent<NewEnemy>();
+                        GameObject enemyHit = hit.collider.gameObject;
+                        NewEnemy enemyHitScript = enemyHit.GetComponent<NewEnemy>();
 
-                    enemyHitScript.Health -= gunDamage; //Tekur líf af enemy-inum
+                        enemyHitScript.Health -= gunDamage; //Tekur líf af enemy-inum
 
-                    // Tékka hvort að óvinurinn eigi að deyja
-                    if (enemyHitScript.Health <= 0) enemyHitScript.Dead();
-                    else enemyHitScript.ChasePlayer();
+                        // Tékka hvort að óvinurinn eigi að deyja
+                        if (enemyHitScript.Health <= 0) enemyHitScript.Dead();
+                        else enemyHitScript.ChasePlayer();
+                    }
                 }
             }
+        }
+        else
+        {
+            Crosshair.SetActive(false);
+            AmmoText.SetActive(false);
         }
     }
 }
