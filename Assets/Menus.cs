@@ -26,7 +26,6 @@ public class Menus : MonoBehaviour
 
     //Save-ar menu-in, virkar sem Start
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         PlayerScript = GameObject.FindWithTag("Player").GetComponent<Player>();

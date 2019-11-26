@@ -35,9 +35,10 @@ public class Inventory : MonoBehaviour
     private Hand HandScript;
 
     //Virkar eins og Start, bara save-ar hluti
-    void Start() { SceneManager.sceneLoaded += CustomStart; }
+    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Inventory loaded in new scene "+scene.name);
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();

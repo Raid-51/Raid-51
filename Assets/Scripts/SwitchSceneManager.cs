@@ -32,9 +32,6 @@ public class SwitchSceneManager : MonoBehaviour
 
     // Þetta passar að CustomStart sé ekki keyrt þegar objectinn er deactivataður
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
-
-    // Þetta keyrir í hvert sinn sem það er skipt um scene
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann, annars eyðir þetta öllum pickupable hlutunum
