@@ -132,67 +132,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.65, z: 4.000001}
   m_Center: {x: 0.00000011920929, y: 0, z: 2.0069003}
---- !u!1001 &152572168
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_Name
-      value: Ammobox
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.525
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e69c04d237e82c84cb6eb615c1116dd1, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 28e74e83947ab944bacef24d32e2a72d, type: 3}
 --- !u!1 &291543375
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +167,7 @@ MonoBehaviour:
   SceneNumber: 0
   SpawnName: Bunker one exit spawn
   InteractionTextID: 7
-  Locked: 1
+  Locked: 0
 --- !u!65 &291543377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -299,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1.3625, y: 2.2375, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &475696940
 PrefabInstance:
@@ -312,6 +251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Keycard slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372036878822226283, guid: 179934a8e13dbbf44b1bc60b20aff4e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8372036878822226276, guid: 179934a8e13dbbf44b1bc60b20aff4e8,
         type: 3}
