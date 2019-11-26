@@ -273,9 +273,10 @@ MonoBehaviour:
   Slot1: {fileID: 209254582}
   Slot2: {fileID: 209254582}
   Slot3: {fileID: 209254582}
+  Slot1ItemID: -1
+  Slot2ItemID: -1
+  Slot3ItemID: -1
   Placeholder: {fileID: 209254582}
-  INV: {fileID: 0}
-  ID: {fileID: 0}
 --- !u!1 &7572571224796834103
 GameObject:
   m_ObjectHideFlags: 0
