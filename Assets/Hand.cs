@@ -8,9 +8,9 @@ public class Hand : MonoBehaviour
     
     //Inventory plássin, geymir hlutina í höndinni
     [Space]
-    private GameObject Slot1;
-    private GameObject Slot2;
-    private GameObject Slot3;
+    public GameObject Slot1;
+    public GameObject Slot2;
+    public GameObject Slot3;
     public int Slot1ItemID = -1;
     public int Slot2ItemID = -1;
     public int Slot3ItemID = -1;
@@ -33,6 +33,10 @@ public class Hand : MonoBehaviour
     {
         INV = GameObject.FindGameObjectWithTag("Interface").GetComponentInChildren<Inventory>();
         ID = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
+
+        //Slot1 = INV.gameObject.transform.GetChild(0).gameObject;
+        //Slot2 = INV.gameObject.transform.GetChild(1).gameObject;
+        //Slot3 = INV.gameObject.transform.GetChild(2).gameObject;
     }
 
     void Update()
