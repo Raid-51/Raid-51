@@ -13,6 +13,7 @@ TagManager:
   - Door
   - Enemy
   - SwitchSceneDoor
+  - Ammo
   layers:
   - Default
   - TransparentFX

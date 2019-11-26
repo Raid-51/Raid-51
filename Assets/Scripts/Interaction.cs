@@ -9,6 +9,7 @@ public class Interaction : MonoBehaviour
 
     private Camera cam;
     private Inventory INV;
+    private GunController Gun;
     private Interface IF;
     private SwitchSceneManager SSM;
 
@@ -18,6 +19,7 @@ public class Interaction : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
         INV = IF.gameObject.GetComponentInChildren<Inventory>();
+        Gun = IF.gameObject.GetComponentInChildren<GunController>();
         SSM = GameObject.FindGameObjectWithTag("GameController").GetComponent<SwitchSceneManager>();
     }
 
@@ -105,6 +107,11 @@ public class Interaction : MonoBehaviour
             else if (hit.collider.tag == "Lock")
             {
 
+            }
+            //Ef það hittir ammo
+            else if (hit.collider.tag == "Ammo")
+            {
+                Gun.Ammo += 10;
             }
             //Ef það hittir ekki neitt þá er spilarinn ekki að interacta við neitt
             else
