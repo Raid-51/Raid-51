@@ -77,12 +77,7 @@ public class Menus : MonoBehaviour
 
     public void MainMenu() //Fer í main menu (byrjunarskjáinn)
     {
-
-    }
-
-    public void QuitGame() //Hættir leiknum og slekkur á honum
-    {
-        Application.Quit();
+        SceneManager.LoadScene("Start");
     }
 
     public IEnumerator Dead() //Ef spilarinn deyr, þá frystir það leikinn og sýnir dauðaskjáinn
