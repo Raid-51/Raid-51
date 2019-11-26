@@ -111,7 +111,16 @@ public class Interaction : MonoBehaviour
             //Ef það hittir ammo
             else if (hit.collider.tag == "Ammo")
             {
-                Gun.Ammo += 10;
+                IF.Interacting(10); //Sýnir texta
+                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við ammo-ið (smellir á mús)
+                {
+                    if (Gun.Ammo != 10) //Ef inventory-ið er ekki fullt
+                    {
+                        Gun.Ammo += 10;
+                        if (Gun.Ammo > 10) Gun.Ammo = 10;
+                        Destroy(hit.collider.gameObject); //Eyðir hlutinum úr veröldinni
+                    }
+                }
             }
             //Ef það hittir ekki neitt þá er spilarinn ekki að interacta við neitt
             else
