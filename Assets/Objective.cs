@@ -25,24 +25,23 @@ public class Objective : MonoBehaviour
     private Objectives obctvs;
 
 
-    void Start() { CustomStart(SceneManager.GetActiveScene(), SceneManager.GetActiveScene()); }
-    void OnEnable() { SceneManager.activeSceneChanged += CustomStart; }
-    void OnDisable() { SceneManager.activeSceneChanged -= CustomStart; }
-    void CustomStart(Scene newScene, Scene oldScene)
+    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
+    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
+    void CustomStart(Scene scene, LoadSceneMode mode)
     {
-        initialScale = transform.localScale;
+        Debug.Log("Objective er að vera initializað");
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         obctvs = transform.parent.GetComponent<Objectives>();
         Cam = Camera.main;
     }
+    private void Awake()
+    {
+        CustomStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        initialScale = transform.localScale;
+    }
 
     void Update()
     {
-        if (Cam == null)
-        {
-            Scene currentScene = SceneManager.GetActiveScene();
-            CustomStart(currentScene, currentScene);
-        }
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;
