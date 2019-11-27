@@ -42,6 +42,10 @@ public class Objective : MonoBehaviour
 
     void Update()
     {
+        if (Cam == null)
+        {
+            CustomStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        }
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;
