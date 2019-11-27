@@ -29,7 +29,6 @@ public class Objective : MonoBehaviour
     void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Objective er að vera initializað");
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         obctvs = transform.parent.GetComponent<Objectives>();
         Cam = Camera.main;
