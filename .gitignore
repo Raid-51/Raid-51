@@ -50,3 +50,7 @@ crashlytics-build.properties
 # Fyrir downlowds folders sem eru með rosalega mikið af drasli
 Downloads/
 Downloads.meta
+
+# Til þess að ignora GitHub extentionina þegar það er verið að sækja projectið í nýjar tölvur.
+GitHub/
+GitHub.meta
