@@ -14,6 +14,7 @@ public class SwitchSceneDoor : MonoBehaviour
     private GameObject IFGameObject;
     private SwitchSceneManager SSM;
     private Player player;
+    private Hand playerHand;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class SwitchSceneDoor : MonoBehaviour
         IFGameObject = GameObject.FindGameObjectWithTag("Interface");
         SSM = GameObject.FindGameObjectWithTag("GameController").GetComponent<SwitchSceneManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerHand = player.gameObject.GetComponent<Hand>();
     }
 
     // Interaction scriptið kallar á þetta til þess að skipta um Scene
@@ -43,6 +45,11 @@ public class SwitchSceneDoor : MonoBehaviour
         // Færa líf og stamina spilaranns á Switch Scene Managerinn til þess að það geti verið það sama í næsta scene-i
         SSM.LastSceneHealth = player.Health;
         SSM.LastSceneStamina = player.Stamina;
+
+        // Færa hluti sem spilarinn heldur á yfir í nýja sceneið
+        SSM.Slot1ItemID = playerHand.Slot1ItemID;
+        SSM.Slot2ItemID = playerHand.Slot2ItemID;
+        SSM.Slot3ItemID = playerHand.Slot3ItemID;
 
         // Skipta um scene
         SceneManager.LoadScene(SceneNumber);

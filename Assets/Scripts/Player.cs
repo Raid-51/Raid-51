@@ -65,10 +65,7 @@ public class Player : MonoBehaviour
             else //Annars er hann það ekki
                 Grounded = false;
         }
-    }
-    //Stillir hraða spilarans
-    void PlayerSpeed()
-    {
+
         //Ef hann er á jörðunni
         if (Grounded)
         {
@@ -111,6 +108,11 @@ public class Player : MonoBehaviour
             else
                 CurrentSpeed = AirSpeed;
         }
+    }
+    //Stillir hraða spilarans
+    void PlayerSpeed()
+    {
+       
     }
     //Spilarinn getur misst líf
     public void TakeDamage(float Damage)

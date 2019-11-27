@@ -7,6 +7,8 @@ public class Breakable_fence : MonoBehaviour
     // breyta búin til til þess að taka eftir hvenær það á að brjóta hliðið
     public bool destroyed = false;
 
+    public bool opened;
+
     void Update()
     {   
         // Þetta gerist af annað script breytir valueinu á destroyed í true
@@ -21,6 +23,7 @@ public class Breakable_fence : MonoBehaviour
 
             // Gera destroyed false aftur til þess að triggera þetta ekki aftur
             destroyed = false;
+            opened = true;
         }
     }
 }

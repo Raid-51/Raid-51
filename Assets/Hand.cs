@@ -11,16 +11,33 @@ public class Hand : MonoBehaviour
     public GameObject Slot1;
     public GameObject Slot2;
     public GameObject Slot3;
+    public int Slot1ItemID = -1;
+    public int Slot2ItemID = -1;
+    public int Slot3ItemID = -1;
 
     [Space]
-    public Inventory INV;
-    public ItemDatabase ID;
+    public GameObject Placeholder;
 
-    private Rigidbody[] rbs;
-    private BoxCollider[] boxc;
-    private Object[] obj;
+    private Inventory INV;
+    private ItemDatabase ID;
 
-    public bool disablescript; //Skriptin er ókláruð, svo það er disable-að á stundinni
+    void Awake()
+    {
+        // Resetta Item IDin
+        Slot1ItemID = -1;
+        Slot2ItemID = -1;
+        Slot3ItemID = -1;
+    }
+
+    void Start()
+    {
+        INV = GameObject.FindGameObjectWithTag("Interface").GetComponentInChildren<Inventory>();
+        ID = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
+
+        //Slot1 = INV.gameObject.transform.GetChild(0).gameObject;
+        //Slot2 = INV.gameObject.transform.GetChild(1).gameObject;
+        //Slot3 = INV.gameObject.transform.GetChild(2).gameObject;
+    }
 
     void Update()
     {
@@ -33,62 +50,62 @@ public class Hand : MonoBehaviour
             ShowItem(false, false, true);
     }
 
-    public void RemoveItem() //tekur hlut úr höndinni ef spilarinn droppar hlutinum
+    public void RemoveItem(int slotno)
     {
-        
+        if (slotno == 1)
+        {
+            Destroy(Slot1);
+            Slot1 = Placeholder;
+            Slot1ItemID = -1;
+        }
+        if (slotno == 2)
+        {
+            Destroy(Slot2);
+            Slot2 = Placeholder;
+            Slot2ItemID = -1;
+        }
+        if (slotno == 3)
+        {
+            Destroy(Slot3);
+            Slot3 = Placeholder;
+            Slot3ItemID = -1;
+        }
     }
 
     public void AddItem(int id, int slot) //Setur hlut í höndina ef spilarinn tekur hann upp
     {
-        if (!disablescript)
+        if (slot == 1) //Setur hlutinn í slot 1
         {
-            if (slot == 1) //Setur hlutinn í slot 1
-            {
-                Slot1 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
-                Slot1.transform.SetParent(HandPos.transform);
-            }
-            if (slot == 2) //Setur hlutinn í slot 2
-            {
-                Slot2 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
-                Slot2.transform.SetParent(HandPos.transform);
-            }
-            if (slot == 3) //Setur hlutinn í slot 3
-            {
-                Slot3 = Instantiate(ID.Items[id].ObjectPrefab, HandPos.position, Quaternion.identity);
-                Slot3.transform.SetParent(HandPos.transform);
-            }
-
-            StaticItem(); //Lætur hlutinn vera fastan
+            Slot1 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot1ItemID = id;
+            ItemPlacement(Slot1);
         }
+        if (slot == 2) //Setur hlutinn í slot 2
+        {
+            Slot2 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot2ItemID = id;
+            ItemPlacement(Slot2);
+        }
+        if (slot == 3) //Setur hlutinn í slot 3
+        {
+            Slot3 = Instantiate(ID.Items[id].HandPrefab, HandPos.position, Quaternion.identity);
+            Slot3ItemID = id;
+            ItemPlacement(Slot3);
+        }
+    }
+
+    void ItemPlacement(GameObject slot)
+    {
+        slot.transform.SetParent(HandPos.transform);
+        slot.transform.localPosition = Vector3.zero;
+        slot.transform.localRotation = Quaternion.identity;
     }
     
     //Sýnir hlutinn ú höndinni
     void ShowItem(bool s1, bool s2, bool s3)
     {
-        if (!disablescript)
-        {
-            if (Slot1 != null) Slot1.SetActive(s1);
-            if (Slot1 != null) Slot2.SetActive(s2);
-            if (Slot1 != null) Slot3.SetActive(s3);
-        }
-    }
-
-    //Lætur hlutinn vera fastan með því að eyða rigifbody, boxcollider og object skriptinni
-    void StaticItem()
-    {
-        //rbs = FindObjectOfType<Rigidbody>();
-        //foreach (Rigidbody rb in transform) Destroy(rb);
-        //foreach (BoxCollider bx in transform) Destroy(bx);
-        //foreach (Rigidbody rib in rbs) Destroy(rib);
-
-        foreach(Transform child in transform)
-        {
-            if (child.gameObject.GetComponent<Rigidbody>() != null) print("bong");
-                //Destroy(child.gameObject.GetComponent<Rigidbody>());
-            if (child.gameObject.GetComponent<BoxCollider>() != null) print("bong");
-            //Destroy(child.gameObject.GetComponent<BoxCollider>());
-            if (child.gameObject.GetComponent<Object>() != null) print("bong");
-            //Destroy(child.gameObject.GetComponent<Object>());
-        }
+        Slot1.SetActive(s1);
+        Slot2.SetActive(s2);
+        Slot3.SetActive(s3);
     }
 }

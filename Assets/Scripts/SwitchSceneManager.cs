@@ -8,6 +8,11 @@ public class SwitchSceneManager : MonoBehaviour
     public List<GameObject> AllPickups;
     public List<int> CollectedItemsFromScene;
 
+    [Header("Hand")]
+    public int Slot1ItemID = -1;
+    public int Slot2ItemID = -1;
+    public int Slot3ItemID = -1;
+
     [HideInInspector]
     public string NextSpawnLocationName;
     [HideInInspector]
@@ -27,9 +32,6 @@ public class SwitchSceneManager : MonoBehaviour
 
     // Þetta passar að CustomStart sé ekki keyrt þegar objectinn er deactivataður
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
-
-    // Þetta keyrir í hvert sinn sem það er skipt um scene
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann, annars eyðir þetta öllum pickupable hlutunum
@@ -79,6 +81,7 @@ public class SwitchSceneManager : MonoBehaviour
 
         // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName
         if (NextSpawnLocationName != "") {
+            Debug.Log("NextSpawnLocationName: "+NextSpawnLocationName);
             Transform playerTransform = player.gameObject.GetComponent<Transform>();
             Transform teleportTransform = GameObject.Find(NextSpawnLocationName).GetComponent<Transform>();
 
@@ -92,5 +95,12 @@ public class SwitchSceneManager : MonoBehaviour
         // Gefa spilaranum rétt líf og stamina
         player.Health = LastSceneHealth;
         player.Stamina = LastSceneStamina;
+
+        // Gefa spilaranum réttu hlutina í höndina
+        Hand playerHand = player.gameObject.GetComponent<Hand>();
+
+        if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
+        if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
+        if (Slot3ItemID != -1) playerHand.AddItem(Slot1ItemID, 3);
     }
 }

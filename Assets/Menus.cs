@@ -17,12 +17,15 @@ public class Menus : MonoBehaviour
     public bool immortal;
     private bool IsDead;
 
+    //Dauðaskjár
+    [Header("Finish")]
+    public GameObject FinishMenu;
+
     private Player PlayerScript;
     private CameraLook Cam;
 
     //Save-ar menu-in, virkar sem Start
     void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
     void CustomStart(Scene scene, LoadSceneMode mode)
     {
         PlayerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
@@ -74,12 +77,7 @@ public class Menus : MonoBehaviour
 
     public void MainMenu() //Fer í main menu (byrjunarskjáinn)
     {
-
-    }
-
-    public void QuitGame() //Hættir leiknum og slekkur á honum
-    {
-        Application.Quit();
+        SceneManager.LoadScene("Start");
     }
 
     public IEnumerator Dead() //Ef spilarinn deyr, þá frystir það leikinn og sýnir dauðaskjáinn
@@ -87,6 +85,12 @@ public class Menus : MonoBehaviour
         IsDead = true;
         yield return new WaitForSeconds(0.1f);
         DeathMenu.SetActive(true);
+        PauseAndUnPause(true);
+    }
+
+    public void GameFinished()
+    {
+        FinishMenu.SetActive(true);
         PauseAndUnPause(true);
     }
 }
