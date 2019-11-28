@@ -34,11 +34,12 @@ public class Inventory : MonoBehaviour
 
     private Hand HandScript;
 
-    //Virkar eins og Start, bara save-ar hluti
-    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void CustomStart(Scene scene, LoadSceneMode mode)
+    //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
+    private Camera cam;
+    void CustomStart()
     {
-        Debug.Log("Inventory loaded in new scene "+scene.name);
+        cam = Camera.main;
+        Debug.Log("Inventory loaded in new scene "+SceneManager.GetActiveScene().name);
         ItemD = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
         SSM = ItemD.gameObject.GetComponent<SwitchSceneManager>();
         DropPoint = GameObject.FindGameObjectWithTag("Drop").GetComponent<Transform>();
@@ -47,6 +48,9 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {   
+        // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
+        if (cam == null) CustomStart();
+
         //Ef spilarinn ýtir á "Q" þá droppar hann hlutinum sem hann heldur á 
         if (Input.GetButtonDown("Dropitem"))
             ClearSlot();

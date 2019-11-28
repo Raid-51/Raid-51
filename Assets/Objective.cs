@@ -15,9 +15,10 @@ public class Objective : MonoBehaviour
     public bool BreakFence;
     public bool FreeAliens;
 
-    [Header("Scripts")]
-    public Inventory InvScript;
-    public Breakable_fence FenceScript;
+    //[Header("Scripts")]
+    private Interface IF;
+    private Inventory InvScript;
+    private Breakable_fence FenceScript;
 
     private Transform player;
     private Vector3 initialScale;
@@ -25,26 +26,23 @@ public class Objective : MonoBehaviour
     private Objectives obctvs;
 
 
-    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void OnDisable() { SceneManager.sceneLoaded -= CustomStart; }
-    void CustomStart(Scene scene, LoadSceneMode mode)
+    //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
+    void CustomStart()
     {
+        Cam = Camera.main;
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         obctvs = transform.parent.GetComponent<Objectives>();
-        Cam = Camera.main;
-    }
-    private void Awake()
-    {
-        CustomStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-        initialScale = transform.localScale;
+
+        // Finna scripts
+        IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
+        InvScript = IF.GetComponentInChildren<Inventory>();
+        FenceScript = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
     }
 
     void Update()
     {
-        if (Cam == null)
-        {
-            CustomStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
-        }
+        // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
+        if (Cam == null) CustomStart();
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;

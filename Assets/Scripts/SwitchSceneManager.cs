@@ -20,20 +20,12 @@ public class SwitchSceneManager : MonoBehaviour
     [HideInInspector]
     public float LastSceneStamina;
 
-    // Þessi kóði þarf allur að keyra á undan Start methodunum
-    void Awake()
+    //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
+    private Camera cam;
+    void CustomStart()
     {
-        // Tékka hvort að þessi Game Controller sé ekki sá fyrsti, ef hann er ekki sá fyrsti slekkur hann á sér
-        if (GameObject.FindGameObjectsWithTag("GameController").Length > 1)
-            this.gameObject.SetActive(false);
-        else
-            DontDestroyOnLoad(this.gameObject);// Passa að objectinum sé ekki eytt
-    }
-
-    // Þetta passar að CustomStart sé ekki keyrt þegar objectinn er deactivataður
-    void OnEnable() { SceneManager.sceneLoaded += CustomStart; }
-    void CustomStart(Scene scene, LoadSceneMode mode)
-    {
+        cam = Camera.main;
+        Scene scene = SceneManager.GetActiveScene();
         // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann, annars eyðir þetta öllum pickupable hlutunum
         if ( !CollectedItemsFromScene.Contains(scene.buildIndex) ) {
 
@@ -102,5 +94,11 @@ public class SwitchSceneManager : MonoBehaviour
         if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
         if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
         if (Slot3ItemID != -1) playerHand.AddItem(Slot1ItemID, 3);
+    }
+
+    void Update()
+    {
+        // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
+        if (cam == null) CustomStart();
     }
 }
