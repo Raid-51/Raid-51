@@ -46,14 +46,13 @@ public class Objectives : MonoBehaviour
         print(AllObjectives.Length);
     }
 
-<<<<<<< HEAD
     private void Update()
     {
+        if (cam == null) CustomStart();// Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
         if(CurrentObjective == 3)
             Description.text = AllObjectives[CurrentObjective].ObjectiveDescription + " " + AliensRescued + "/" + MaxAliens;
     }
 
-=======
     //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
     void CustomStart()
     {
@@ -73,10 +72,6 @@ public class Objectives : MonoBehaviour
         }
     }
 
-    // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
-    void Update() { if (cam == null) CustomStart(); }
-
->>>>>>> 74e819e33013faeb6b83670cecbe162b760b2fb1
     public void ObjectiveFinished()
     {
         if (CurrentObjective +1 >= AllObjectives.Length)
