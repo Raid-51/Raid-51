@@ -42,6 +42,12 @@ public class Objectives : MonoBehaviour
         print(AllObjectives.Length);
     }
 
+    private void Update()
+    {
+        if(CurrentObjective == 3)
+            Description.text = AllObjectives[CurrentObjective].ObjectiveDescription + " " + AliensRescued + "/" + MaxAliens;
+    }
+
     public void ObjectiveFinished()
     {
         if (CurrentObjective +1 >= AllObjectives.Length)
