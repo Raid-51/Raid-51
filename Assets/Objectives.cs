@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Objectives : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class Objectives : MonoBehaviour
     public objctvs[] AllObjectives; //Hlutirnir
 
 
+    private bool InBunker;
+    private Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,15 +46,42 @@ public class Objectives : MonoBehaviour
         print(AllObjectives.Length);
     }
 
+    //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
+    void CustomStart()
+    {
+        cam = Camera.main;
+
+        // Þetta disablar objectivin þegar það er 
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex == 0)
+        {
+            InBunker = false;
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
+        }
+        else
+        {
+            InBunker = true;
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
+        }
+    }
+
+    // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
+    void Update() { if (cam == null) CustomStart(); }
+
     public void ObjectiveFinished()
     {
         if (CurrentObjective +1 >= AllObjectives.Length)
             MenuScript.GameFinished();
         else
         {
-            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
             CurrentObjective += 1;
-            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
+
+            if (InBunker == false)
+            {
+                AllObjectives[CurrentObjective - 1].ObjectiveMarker.SetActive(false);
+                AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
+            }
+
             Header.text = AllObjectives[CurrentObjective].ObjectiveName;
             Description.text = AllObjectives[CurrentObjective].ObjectiveDescription;
         }
