@@ -92,8 +92,8 @@ public class SwitchSceneManager : MonoBehaviour
         Hand playerHand = player.gameObject.GetComponent<Hand>();
 
         if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
-        if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
-        if (Slot3ItemID != -1) playerHand.AddItem(Slot1ItemID, 3);
+        if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
+        if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
     }
 
     void Update()

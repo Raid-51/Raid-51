@@ -21,8 +21,12 @@ public class GunController : MonoBehaviour
     private Inventory INV;
     private Interface IF;
 
-    void Start()
+    //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
+    private Camera cam;
+    void CustomStart()
     {
+        cam = Camera.main;
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerCamera = player.GetComponentInChildren<Camera>();
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
@@ -30,6 +34,9 @@ public class GunController : MonoBehaviour
     }
     void Update()
     {
+        // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
+        if (cam == null) CustomStart();
+
         AmmoTextAmount.text = Ammo + "/10";
 
         if (INV.CurrentItemID() == 3) //Ef spilarinn er ða halda á byssu
