@@ -11,9 +11,11 @@ public class Alien : MonoBehaviour
     public bool Freed; //Er geimveran búin að vera frelsuð?
 
     private NavMeshAgent agent;
+    private Objectives ObjectiveScript;
 
     void Start() //Er kyrr
     {
+        ObjectiveScript = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<Objectives>();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = RunPos.position;
         agent.isStopped = true;
@@ -29,6 +31,7 @@ public class Alien : MonoBehaviour
 
     public void Run() //Hleypur að stað að staðsetningunni
     {
+        ObjectiveScript.AliensRescued += 1;
         agent.isStopped = false;
         Anim.SetTrigger("Run");
         agent.stoppingDistance = 0;

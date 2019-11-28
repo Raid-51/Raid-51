@@ -26,6 +26,11 @@ public class Objective : MonoBehaviour
     private Objectives obctvs;
 
 
+    private void Start()
+    {
+        initialScale = transform.localScale;
+    }
+
     //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
     void CustomStart()
     {
@@ -43,6 +48,7 @@ public class Objective : MonoBehaviour
     {
         // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
         if (Cam == null) CustomStart();
+
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;
