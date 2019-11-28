@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Alien : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Alien : MonoBehaviour
 
     private NavMeshAgent agent;
     private Objectives ObjectiveScript;
+    private Scene currentScene;
 
     void Start() //Er kyrr
     {
@@ -19,6 +21,7 @@ public class Alien : MonoBehaviour
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = RunPos.position;
         agent.isStopped = true;
+        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
