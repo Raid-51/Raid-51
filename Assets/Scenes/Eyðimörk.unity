@@ -11444,7 +11444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265901450}
   m_Layer: 0
-  m_Name: Bunker five exit spawn
+  m_Name: Bunker 5 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18824,7 +18824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456103316}
   m_Layer: 0
-  m_Name: Bunker three exit spawn
+  m_Name: Bunker 3 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26824,7 +26824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731321403}
   m_Layer: 0
-  m_Name: Bunker two exit spawn
+  m_Name: Bunker 2 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34762,7 +34762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908510488}
   m_Layer: 0
-  m_Name: Bunker seven exit spawn
+  m_Name: Bunker 7 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37105,7 +37105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983042634}
   m_Layer: 0
-  m_Name: Bunker ten exit spawn
+  m_Name: Bunker 10 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43527,7 +43527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160287059}
   m_Layer: 0
-  m_Name: Bunker six exit spawn
+  m_Name: Bunker 6 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48805,7 +48805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1310634714}
   m_Layer: 0
-  m_Name: Bunker nine exit spawn
+  m_Name: Bunker 9 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55277,7 +55277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1451818395}
   m_Layer: 0
-  m_Name: Bunker eight exit spawn
+  m_Name: Bunker 8 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69841,7 +69841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915302456}
   m_Layer: 0
-  m_Name: Bunker four exit spawn
+  m_Name: Bunker 4 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77952,7 +77952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2095192629}
   m_Layer: 0
-  m_Name: Bunker one exit spawn
+  m_Name: Bunker 1 exit spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80961,9 +80961,9 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8416322273147020304, guid: 0321eee9c2488af4f9c38b2bd2586e5c, type: 3}
-    - {fileID: 5742858807459097811, guid: 0321eee9c2488af4f9c38b2bd2586e5c, type: 3}
+    m_RemovedComponents: [{fileID: 8416322273147020304, guid: 0321eee9c2488af4f9c38b2bd2586e5c,
+        type: 3}, {fileID: 5742858807459097811, guid: 0321eee9c2488af4f9c38b2bd2586e5c,
+        type: 3}]
   m_SourcePrefab: {fileID: 100100000, guid: 0321eee9c2488af4f9c38b2bd2586e5c, type: 3}
 --- !u!4 &5583375125844153058 stripped
 Transform:

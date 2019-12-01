@@ -7,6 +7,7 @@ public class SwitchSceneManager : MonoBehaviour
 {
     public List<GameObject> AllPickups;
     public List<int> CollectedItemsFromScene;
+    private List<int> AllClosedDoors = new List<int>();
 
     [Header("Hand")]
     public int Slot1ItemID = -1;
@@ -80,6 +81,15 @@ public class SwitchSceneManager : MonoBehaviour
             playerTransform.position = teleportTransform.position;
             playerTransform.rotation = teleportTransform.rotation;
 
+            // Close the bunker the player is exiting
+            if (NextSpawnLocationName.Substring(0, 6) == "Bunker")
+            {
+                Debug.Log("Closing Bunker Door");
+
+                SwitchSceneDoor SSD = teleportTransform.gameObject.GetComponentInParent<SwitchSceneDoor>();
+                AllClosedDoors.Add(GetBunkerNumber(NextSpawnLocationName));
+            }
+
             // Hreinsa NextSpawnLocationName
             NextSpawnLocationName = "";
         }
@@ -92,13 +102,35 @@ public class SwitchSceneManager : MonoBehaviour
         Hand playerHand = player.gameObject.GetComponent<Hand>();
 
         if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
-        if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
+        if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
         if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
+
+        // Loka öllum hurðum sem eru í AllClosedDoors listanum
+        if (scene.buildIndex == 0)
+        {
+            foreach (GameObject SSDGameObject in GameObject.FindGameObjectsWithTag("SwitchSceneDoor"))
+            {
+                SwitchSceneDoor SSD = SSDGameObject.GetComponent<SwitchSceneDoor>();
+                GameObject teleport = SSDGameObject.transform.GetChild(0).gameObject;
+
+                if (teleport.name.Substring(0, 6) == "Bunker")
+                    if (AllClosedDoors.IndexOf(GetBunkerNumber(teleport.name)) != -1) SSD.CloseDoor();
+            }
+        }
     }
 
     void Update()
     {
         // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
         if (cam == null) CustomStart();
+    }
+
+    private int GetBunkerNumber(string name)
+    {
+        int BunkerNumber;
+        if (name.Substring(8, 1) == " ") BunkerNumber = int.Parse(name.Substring(7, 1));
+        else BunkerNumber = int.Parse(name.Substring(7, 2));
+
+        return BunkerNumber;
     }
 }
