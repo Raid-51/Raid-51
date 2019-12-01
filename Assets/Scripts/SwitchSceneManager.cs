@@ -7,6 +7,7 @@ public class SwitchSceneManager : MonoBehaviour
 {
     public List<GameObject> AllPickups;
     public List<int> CollectedItemsFromScene;
+    private List<SwitchSceneDoor> AllClosedDoors;
 
     [Header("Hand")]
     public int Slot1ItemID = -1;
@@ -80,6 +81,14 @@ public class SwitchSceneManager : MonoBehaviour
             playerTransform.position = teleportTransform.position;
             playerTransform.rotation = teleportTransform.rotation;
 
+            // Close the bunker the player is exiting
+            if (NextSpawnLocationName.Substring(0, 7) == "Bunker ")
+            {
+                Debug.Log("Closing Bunker Door");
+                SwitchSceneDoor SSD = teleportTransform.gameObject.GetComponentInParent<SwitchSceneDoor>();
+                AllClosedDoors.Add(SSD);
+            }
+
             // Hreinsa NextSpawnLocationName
             NextSpawnLocationName = "";
         }
@@ -94,6 +103,9 @@ public class SwitchSceneManager : MonoBehaviour
         if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
         if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
         if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
+
+        // Loka öllum hurðum sem eru í AllClosedDoors listanum
+        if (scene.buildIndex == 0) foreach (SwitchSceneDoor SSD in AllClosedDoors) SSD.CloseDoor();
     }
 
     void Update()

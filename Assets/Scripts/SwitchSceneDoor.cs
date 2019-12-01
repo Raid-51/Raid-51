@@ -54,4 +54,10 @@ public class SwitchSceneDoor : MonoBehaviour
         // Skipta um scene
         SceneManager.LoadScene(SceneNumber);
     }
+    public void CloseDoor()
+    {
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        this.gameObject.GetComponentInChildren<Opendoor>().gameObject.GetComponent<BoxCollider>();
+        this.enabled = false;
+    }
 }
