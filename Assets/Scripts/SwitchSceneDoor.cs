@@ -57,7 +57,8 @@ public class SwitchSceneDoor : MonoBehaviour
     public void CloseDoor()
     {
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        this.gameObject.GetComponentInChildren<Opendoor>().gameObject.GetComponent<BoxCollider>();
+        this.gameObject.GetComponentInChildren<Opendoor>().gameObject.SetActive(false);
+        this.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
         this.enabled = false;
     }
 }

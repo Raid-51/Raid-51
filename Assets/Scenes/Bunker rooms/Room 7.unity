@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNumber: 0
-  SpawnName: Bunker seven exit spawn
+  SpawnName: Bunker 7 exit spawn
   InteractionTextID: 7
   Locked: 0
 --- !u!65 &291543377
