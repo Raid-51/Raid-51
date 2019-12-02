@@ -14,6 +14,9 @@ public class SwitchSceneManager : MonoBehaviour
     public int Slot2ItemID = -1;
     public int Slot3ItemID = -1;
 
+    [Header("Alien")]
+    public bool AlienInLastScene = false;
+
     [HideInInspector]
     public string NextSpawnLocationName;
     [HideInInspector]
@@ -71,7 +74,7 @@ public class SwitchSceneManager : MonoBehaviour
         // Finna spilarann til þess að gefa honum rétt líf og stamina og líka til þess að mögulega hreyfa hann
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName
+        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName og gera hluti tengt því að fara úr bunkerinum
         if (NextSpawnLocationName != "") {
             Debug.Log("NextSpawnLocationName: "+NextSpawnLocationName);
             Transform playerTransform = player.gameObject.GetComponent<Transform>();
@@ -83,11 +86,21 @@ public class SwitchSceneManager : MonoBehaviour
             // Close the bunker the player is exiting
             if (NextSpawnLocationName.Substring(0, 6) == "Bunker")
             {
-                Debug.Log("Closing Bunker Door");
+                // Ef það var ekki ófrelsuð geimvera í síðustu senu læsist hurðin
+                if (AlienInLastScene == false)
+                    AllClosedDoors.Add(GetBunkerNumber(NextSpawnLocationName));// Loka hurðinni
+                else
+                    AlienInLastScene = false;
 
-                SwitchSceneDoor SSD = teleportTransform.gameObject.GetComponentInParent<SwitchSceneDoor>();
-                AllClosedDoors.Add(GetBunkerNumber(NextSpawnLocationName));
+                // Disablea óbvini sem eiga ekki að spawna þegar spilarinn er að koma úr bunker
+                foreach (GameObject enemyGameObject in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    NewEnemy enemyScript = enemyGameObject.GetComponent<NewEnemy>();
+                    if (enemyScript.noSpawnOnBunkerExit) enemyGameObject.SetActive(false);
+                }
             }
+
+
 
             // Hreinsa NextSpawnLocationName
             NextSpawnLocationName = "";
@@ -104,7 +117,7 @@ public class SwitchSceneManager : MonoBehaviour
         if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
         if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
 
-        // Loka öllum hurðum sem eru í AllClosedDoors listanum
+        // Loka öllum hurðum sem eru í AllClosedDoors listanum ef spilarinn er í eyðimörkinni
         if (scene.buildIndex == 0)
         {
             foreach (GameObject SSDGameObject in GameObject.FindGameObjectsWithTag("SwitchSceneDoor"))
@@ -112,8 +125,12 @@ public class SwitchSceneManager : MonoBehaviour
                 SwitchSceneDoor SSD = SSDGameObject.GetComponent<SwitchSceneDoor>();
                 GameObject teleport = SSDGameObject.transform.GetChild(0).gameObject;
 
+                // Ef spilarinn er að koma úr bunker
                 if (teleport.name.Substring(0, 6) == "Bunker")
-                    if (AllClosedDoors.IndexOf(GetBunkerNumber(teleport.name)) != -1) SSD.CloseDoor();
+                    // Ef þessi bunker er í AllClosedDoors listanum
+                    if (AllClosedDoors.IndexOf(GetBunkerNumber(teleport.name)) != -1)
+                        // Loka hurðinni
+                        SSD.CloseDoor();
             }
         }
     }

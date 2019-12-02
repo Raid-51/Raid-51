@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 public class NewEnemy : MonoBehaviour
@@ -11,6 +12,7 @@ public class NewEnemy : MonoBehaviour
     public float WalkingSpeed = 3;
     public float RunningSpeed = 6;
     public bool dead = false;
+    public bool noSpawnOnBunkerExit = false;
 
     [Space]
     public bool Walking = true; //á hann að standa eða labba?
@@ -44,10 +46,12 @@ public class NewEnemy : MonoBehaviour
     private Player PlayerScript;
     private Collider thisCollider;
     public GameObject VisionBlock;
+    private SwitchSceneManager SSM;
 
 
     void Start()
     {
+        SSM = GameObject.FindGameObjectWithTag("GameController").GetComponent<SwitchSceneManager>();
         Anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();

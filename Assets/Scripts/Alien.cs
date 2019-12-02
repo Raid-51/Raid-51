@@ -11,17 +11,22 @@ public class Alien : MonoBehaviour
 
     public bool Freed; //Er geimveran búin að vera frelsuð?
 
-    private NavMeshAgent agent;
+    private GameObject GameManager;
+    private SwitchSceneManager SSM;
     private Objectives ObjectiveScript;
-    private Scene currentScene;
+
+    private NavMeshAgent agent;
 
     void Start() //Er kyrr
     {
-        ObjectiveScript = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<Objectives>();
+        GameManager = GameObject.FindGameObjectWithTag("GameController");
+        SSM = GameManager.GetComponent<SwitchSceneManager>();
+        SSM.AlienInLastScene = true;
+        ObjectiveScript = GameManager.GetComponentInChildren<Objectives>();
+
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.destination = RunPos.position;
         agent.isStopped = true;
-        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -39,5 +44,6 @@ public class Alien : MonoBehaviour
         Anim.SetTrigger("Run");
         agent.stoppingDistance = 0;
         Freed = true;
+        SSM.AlienInLastScene = false;
     }
 }

@@ -34,17 +34,20 @@ public class Interaction : MonoBehaviour
             //Ef það hittir hlut sem er hægt að taka upp
             if (hit.collider.tag == "Object")
             {
-                IF.Interacting(0); //Sýnir texta
-                if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hlutinn (smellir á mús)
+                Object ObjectHit = hit.collider.gameObject.GetComponent<Object>();
+                if (ObjectHit.Interactable)
                 {
-                    if (!INV.Fullinventory) //Ef inventory-ið er ekki fullt
+                    IF.Interacting(0); //Sýnir texta
+                    if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við hlutinn (smellir á mús)
                     {
-                        INV.AddToInventory(hit.collider.GetComponent<Object>().ObjectID); //Setur hlutinn í inventory-ið
-                        SSM.AllPickups.Remove(hit.collider.gameObject);
-                        Destroy(hit.collider.gameObject); //Eyðir hlutinum úr veröldinni
+                        if (!INV.Fullinventory) //Ef inventory-ið er ekki fullt
+                        {
+                            INV.AddToInventory(hit.collider.GetComponent<Object>().ObjectID); //Setur hlutinn í inventory-ið
+                            SSM.AllPickups.Remove(hit.collider.gameObject);
+                            Destroy(hit.collider.gameObject); //Eyðir hlutinum úr veröldinni
+                        }
                     }
                 }
-
             }
             //Ef það hittir girðingu sem er hægt að brjóta
             else if (hit.collider.tag == "Breakable fence")
