@@ -26,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bunker rooms/Room 6.unity
     guid: 3de7293475abffd43b5c17655ae914d7
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Bunker rooms/Room 7.unity
     guid: b06800d76045bc54890dece89b5c8241
@@ -40,5 +37,8 @@ EditorBuildSettings:
     guid: 35c0b9b1aabdf0e41bf9dacdb10fb7ed
   - enabled: 1
     path: Assets/Scenes/Bunker rooms/Room 10.unity
-    guid: c90e375d26b9f5c4b9675edc43e65bed
+    guid: d2fc21909f462f846823a10bb168628c
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: b0da45656d1d600488b062d7b61a0b6c
   m_configObjects: {}
