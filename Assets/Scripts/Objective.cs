@@ -41,7 +41,7 @@ public class Objective : MonoBehaviour
         // Finna scripts
         IF = GameObject.FindGameObjectWithTag("Interface").GetComponent<Interface>();
         InvScript = IF.GetComponentInChildren<Inventory>();
-        FenceScript = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
+        if (SceneManager.GetActiveScene().buildIndex == 0) FenceScript = GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>();
     }
 
     void Update()

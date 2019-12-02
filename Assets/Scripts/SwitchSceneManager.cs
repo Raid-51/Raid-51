@@ -52,11 +52,10 @@ public class SwitchSceneManager : MonoBehaviour
                 Destroy(Pickupable);
 
         // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
         foreach (GameObject Pickupable in AllPickups)
         {
             // Ef hluturinn segir að hann eigi að vera í þessu scenei þá er hann activataður, annars er hann deactivataður
-            if (Pickupable.GetComponent<Object>().SceneNumber == currentScene)
+            if (Pickupable.GetComponent<Object>().SceneNumber == scene.buildIndex)
             {
                 // Færa hlutinn aðeins upp svo að hann detti ekki í gegnum terrainið
                 Vector3 location = Pickupable.transform.position;

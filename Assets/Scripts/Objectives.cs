@@ -59,17 +59,21 @@ public class Objectives : MonoBehaviour
     {
         cam = Camera.main;
 
-        // Þetta disablar objectivin þegar það er 
+        // Þetta disablar objectivin þegar spilarinn er í bunker
         Scene scene = SceneManager.GetActiveScene();
         if (scene.buildIndex == 0)
         {
             InBunker = false;
             AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
+            if (AllObjectives[CurrentObjective].ObjectiveDots != null)
+                AllObjectives[CurrentObjective].ObjectiveDots.SetActive(true);
         }
         else
         {
             InBunker = true;
             AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
+            if (AllObjectives[CurrentObjective].ObjectiveDots != null)
+                AllObjectives[CurrentObjective].ObjectiveDots.SetActive(false);
         }
     }
 
