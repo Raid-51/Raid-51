@@ -98,9 +98,10 @@ public class SwitchSceneManager : MonoBehaviour
                     NewEnemy enemyScript = enemyGameObject.GetComponent<NewEnemy>();
                     if (enemyScript.noSpawnOnBunkerExit) enemyGameObject.SetActive(false);
                 }
+
+                // Opna hliðið ef spilarinn er að koma úr bunker
+                GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>().destroyed = true;
             }
-
-
 
             // Hreinsa NextSpawnLocationName
             NextSpawnLocationName = "";
@@ -114,7 +115,7 @@ public class SwitchSceneManager : MonoBehaviour
         Hand playerHand = player.gameObject.GetComponent<Hand>();
 
         if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
-        if (Slot2ItemID != -1) playerHand.AddItem(Slot1ItemID, 2);
+        if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
         if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
 
         // Loka öllum hurðum sem eru í AllClosedDoors listanum ef spilarinn er í eyðimörkinni
