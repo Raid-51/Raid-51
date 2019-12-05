@@ -30,6 +30,11 @@ public class SwitchSceneManager : MonoBehaviour
     {
         cam = Camera.main;
         Scene scene = SceneManager.GetActiveScene();
+
+
+        /* ==================================================
+           ==========       Pickupable Items       ==========
+           ================================================== */
         // Bæta öllum pickupable hlutunum í AllPickups listann ef það er ekki búið að bæta objectunum í þessu scene í listann, annars eyðir þetta öllum pickupable hlutunum
         if ( !CollectedItemsFromScene.Contains(scene.buildIndex) ) {
 
@@ -48,12 +53,10 @@ public class SwitchSceneManager : MonoBehaviour
         else
             foreach (GameObject Pickup in GameObject.FindGameObjectsWithTag("Object"))
                 if (Pickup.scene.buildIndex != -1) Destroy(Pickup);
-
         // Eyða öllum pickupable hlutunum sem byrjuðu í sceninu en eiga ekki að vera lengur því að leikurinn er núþegar að geyma þá
         foreach (GameObject Pickupable in GameObject.FindGameObjectsWithTag("Object"))
             if (!AllPickups.Contains(Pickupable))
                 Destroy(Pickupable);
-
         // Slökkva og kveikja á pickupable objectum eftir því í hvaða sceni þeir eiga að vera
         foreach (GameObject Pickupable in AllPickups)
         {
@@ -71,19 +74,36 @@ public class SwitchSceneManager : MonoBehaviour
             else Pickupable.SetActive(false);
         }
 
+
+        /* ==================================================
+           ==========         Player stats         ==========
+           ================================================== */
         // Finna spilarann til þess að gefa honum rétt líf og stamina og líka til þess að mögulega hreyfa hann
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName og gera hluti tengt því að fara úr bunkerinum
-        if (NextSpawnLocationName != "") {
-            Debug.Log("NextSpawnLocationName: "+NextSpawnLocationName);
+        // Gefa spilaranum rétt líf og stamina
+        player.Health = LastSceneHealth;
+        player.Stamina = LastSceneStamina;
+        // Gefa spilaranum réttu hlutina í höndina
+        Hand playerHand = player.gameObject.GetComponent<Hand>();
+        if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
+        if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
+        if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
+        // Teleporta spilaranum á staðinn sem er í NextSpawnLocationName ef það er eitthvað í NextSpawnLocationName
+        if (NextSpawnLocationName != "")
+        {
+            Debug.Log("NextSpawnLocationName: " + NextSpawnLocationName);
             Transform playerTransform = player.gameObject.GetComponent<Transform>();
             Transform teleportTransform = GameObject.Find(NextSpawnLocationName).GetComponent<Transform>();
-
             playerTransform.position = teleportTransform.position;
             playerTransform.rotation = teleportTransform.rotation;
+        }
 
-            // Close the bunker the player is exiting
+
+        /* ==================================================
+           ==========  Spilarinn kemur úr bunker   ==========
+           ================================================== */
+        if (NextSpawnLocationName != "") {
+            // Loka bunkerunum sem spilarinn er að fara útúr ef það eru engar geimverur þar lengur
             if (NextSpawnLocationName.Substring(0, 6) == "Bunker")
             {
                 // Ef það var ekki ófrelsuð geimvera í síðustu senu læsist hurðin
@@ -102,21 +122,8 @@ public class SwitchSceneManager : MonoBehaviour
                 // Opna hliðið ef spilarinn er að koma úr bunker
                 GameObject.FindGameObjectWithTag("Breakable fence").GetComponent<Breakable_fence>().destroyed = true;
             }
-
-            // Hreinsa NextSpawnLocationName
-            NextSpawnLocationName = "";
         }
 
-        // Gefa spilaranum rétt líf og stamina
-        player.Health = LastSceneHealth;
-        player.Stamina = LastSceneStamina;
-
-        // Gefa spilaranum réttu hlutina í höndina
-        Hand playerHand = player.gameObject.GetComponent<Hand>();
-
-        if (Slot1ItemID != -1) playerHand.AddItem(Slot1ItemID, 1);
-        if (Slot2ItemID != -1) playerHand.AddItem(Slot2ItemID, 2);
-        if (Slot3ItemID != -1) playerHand.AddItem(Slot3ItemID, 3);
 
         // Loka öllum hurðum sem eru í AllClosedDoors listanum ef spilarinn er í eyðimörkinni
         if (scene.buildIndex == 0)
@@ -126,7 +133,7 @@ public class SwitchSceneManager : MonoBehaviour
                 SwitchSceneDoor SSD = SSDGameObject.GetComponent<SwitchSceneDoor>();
                 GameObject teleport = SSDGameObject.transform.GetChild(0).gameObject;
 
-                // Ef spilarinn er að koma úr bunker
+                // Ef þessi hurð teleportar úr bunker er henni lokuð ef hún er líka í AllClosedDoors listanum
                 if (teleport.name.Substring(0, 6) == "Bunker")
                     // Ef þessi bunker er í AllClosedDoors listanum
                     if (AllClosedDoors.IndexOf(GetBunkerNumber(teleport.name)) != -1)
@@ -134,6 +141,10 @@ public class SwitchSceneManager : MonoBehaviour
                         SSD.CloseDoor();
             }
         }
+
+
+        // Hreinsa NextSpawnLocationName
+        NextSpawnLocationName = "";
     }
 
     void Update()
@@ -142,9 +153,14 @@ public class SwitchSceneManager : MonoBehaviour
         if (cam == null) CustomStart();
     }
 
+    // Þegga fall skilar bunker tölunni úr streng sem er sendur inn, þetta er fall vegna
+    // þess að þetta er keyrt tvisvar í Custom start og það er betra að hafa þetta sitt
+    // egið fall heldur en að skrifa þetta tvisvar.
     private int GetBunkerNumber(string name)
     {
         int BunkerNumber;
+        // Ef það er bil hjá áttunda stafnum tekur talan bara einn staf, annars þarf að
+        // parsa tvo stafi til þess að það sé hægt að hafa 10 bunkera.
         if (name.Substring(8, 1) == " ") BunkerNumber = int.Parse(name.Substring(7, 1));
         else BunkerNumber = int.Parse(name.Substring(7, 2));
 

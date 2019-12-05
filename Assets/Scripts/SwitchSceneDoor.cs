@@ -54,11 +54,12 @@ public class SwitchSceneDoor : MonoBehaviour
         // Skipta um scene
         SceneManager.LoadScene(SceneNumber);
     }
+    // Þetta fall slekkur á collider hurðarinnar og setir spýtur fyrir til þess að sýna að hurðin er lokuð
     public void CloseDoor()
     {
-        this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        this.gameObject.GetComponentInChildren<Opendoor>().gameObject.SetActive(false);
-        this.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
-        this.enabled = false;
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;// Slökkva á collider
+        this.gameObject.GetComponentInChildren<Opendoor>().gameObject.SetActive(false);// Slökkva á keycard lesara
+        this.gameObject.transform.parent.GetChild(1).gameObject.SetActive(true);// Setja spýtur fyrir
+        this.enabled = false;// Slökkva á þessari scriptu til öryggis
     }
 }

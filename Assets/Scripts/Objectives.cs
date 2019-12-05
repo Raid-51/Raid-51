@@ -64,15 +64,15 @@ public class Objectives : MonoBehaviour
         if (scene.buildIndex == 0)
         {
             InBunker = false;
-            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
-            if (AllObjectives[CurrentObjective].ObjectiveDots != null)
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);// Kveikja á current objective punktinum
+            if (AllObjectives[CurrentObjective].ObjectiveDots != null)// Kveikja á objective dots ef það er verið að nota þá
                 AllObjectives[CurrentObjective].ObjectiveDots.SetActive(true);
         }
         else
         {
             InBunker = true;
-            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);
-            if (AllObjectives[CurrentObjective].ObjectiveDots != null)
+            AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(false);// Slökkva á current objective punktinum
+            if (AllObjectives[CurrentObjective].ObjectiveDots != null)// Slökkva á objective dots ef það er verið að nota þá
                 AllObjectives[CurrentObjective].ObjectiveDots.SetActive(false);
         }
     }
