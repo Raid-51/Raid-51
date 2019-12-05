@@ -88,7 +88,7 @@ public class Menus : MonoBehaviour
         PauseAndUnPause(true);
     }
 
-    public void GameFinished()
+    public void GameFinished() //Þegar leikinum er lokið þá frystist leikurinn og lokaskjárinn er sýndur
     {
         FinishMenu.SetActive(true);
         PauseAndUnPause(true);

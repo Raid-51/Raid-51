@@ -28,7 +28,7 @@ public class Objective : MonoBehaviour
 
     private void Start()
     {
-        initialScale = transform.localScale;
+        initialScale = transform.localScale; //Geymir stærð objective marker-ins til að hann stækki og minnki eðlilega
     }
 
     //Virkar eins og Start, nema þetta keyrir í hvert sinn sem það er skipt um scene
@@ -49,31 +49,32 @@ public class Objective : MonoBehaviour
         // Þetta er til þess að keyra CustomStart þegar það er búið að skipta um scene
         if (Cam == null) CustomStart();
 
+        //Nær í staðsetningu myndavélar og stækkar marker-ið við fjarlægð
         Plane plane = new Plane(Cam.transform.forward, Cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
         transform.localScale = initialScale * dist * UIScale;
 
-        transform.LookAt(2* transform.position - new Vector3(player.position.x, player.position.y + 1, player.position.z));
+        transform.LookAt(2* transform.position - new Vector3(player.position.x, player.position.y + 1, player.position.z)); //Lætur markerinn horfa á spilaran
 
-        if (GrabItem)
+        if (GrabItem) //Ef objective-ið er að ná í hlut, þá klárast það ef maður nær í hlutinn
         {
             if (InvScript.itemID1 == ItemID || InvScript.itemID2 == ItemID || InvScript.itemID3 == ItemID)
                 obctvs.ObjectiveFinished();
         }
-        else if (GetToLocation)
+        else if (GetToLocation) //Ef objective-ið er að komast að staðsetningu, þá klárast það ef maður kemur að því
         {
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance <= 3)
                 obctvs.ObjectiveFinished();
         }
-        else if (BreakFence)
+        else if (BreakFence) //Ef objective-ið er að brjóta girðinguna, þá klárast það ef maður gerir það
         {
             if (FenceScript.opened)
             {
                 obctvs.ObjectiveFinished();
             }
         }
-        else if (FreeAliens)
+        else if (FreeAliens) //Ef objective-ið er að frelsa geimveru, þá klárast það þegar geimverunar allar eru frelsaðar
         {
             if (obctvs.AliensRescued >= obctvs.MaxAliens)
                 obctvs.ObjectiveFinished();

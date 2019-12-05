@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    //
+    // ÞESSI SCRIPT ER EKKI LENGUR Í NOTKUN, GEYMI BARA FYRIR REFERENCE!
+    // 
+
+
     public GameObject PauseMenu;
     
     private bool Paused;

@@ -12,14 +12,14 @@ public class Objectives : MonoBehaviour
     public Text Header;
     public Text Description;
 
-    [Space]
+    [Space] //Geymir hversu margar geimverur þurfa að vera bjargaðar og hveru margar eru nú þegar
     public int AliensRescued;
     public int MaxAliens;
 
     [Space]
     public Menus MenuScript;
 
-    [System.Serializable]
+    [System.Serializable] //Geymir öll objectives
     public class objctvs
     {
         [TextArea(1, 1)]
@@ -38,7 +38,6 @@ public class Objectives : MonoBehaviour
     private bool InBunker;
     private Camera cam;
 
-    // Start is called before the first frame update
     void Start()
     {
         AllObjectives[CurrentObjective].ObjectiveMarker.SetActive(true);
@@ -77,15 +76,15 @@ public class Objectives : MonoBehaviour
         }
     }
 
-    public void ObjectiveFinished()
+    public void ObjectiveFinished() //Þegar maður klárar objective
     {
-        if (CurrentObjective +1 >= AllObjectives.Length)
+        if (CurrentObjective +1 >= AllObjectives.Length) //Ef spilarinn er búinn með öll objective-in þá klárast leikurinn
             MenuScript.GameFinished();
-        else
+        else //Annars þá hoppar það í næsta objective
         {
             CurrentObjective += 1;
 
-            if (InBunker == false)
+            if (InBunker == false) //Ef spilarinn fer inn í bunker þá hverfa objective-in
             {
                 AllObjectives[CurrentObjective - 1].ObjectiveMarker.SetActive(false);
                 if(AllObjectives[CurrentObjective - 1].ObjectiveDots != null) AllObjectives[CurrentObjective - 1].ObjectiveDots.SetActive(false);
@@ -93,6 +92,7 @@ public class Objectives : MonoBehaviour
                 if (AllObjectives[CurrentObjective].ObjectiveDots != null) AllObjectives[CurrentObjective].ObjectiveDots.SetActive(true);
             }
 
+            //Texti í horninu sem gefa meiri upplýsingar um objective-ið sem er í gangi
             Header.text = AllObjectives[CurrentObjective].ObjectiveName;
             Description.text = AllObjectives[CurrentObjective].ObjectiveDescription;
         }

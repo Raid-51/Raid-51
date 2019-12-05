@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Startmenu : MonoBehaviour
 {
+    //Þessi script er fyrir byrjunarskjáinn
+
     public void StartGame() //Byrjar leikin
     {
         SceneManager.LoadScene("Eyðimörk");

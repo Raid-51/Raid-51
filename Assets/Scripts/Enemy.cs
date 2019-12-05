@@ -5,6 +5,11 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //
+    // ÞESSI SCRIPT ER EKKI LENGUR Í NOTKUN, GEYMI BARA FYRIR REFERENCE!
+    // 
+
+
     public float Health = 100;
 
     // Þetta er eitthvað sem önnur script geta notað til þess að fá vörðinn til þess að triggera dauða animation
