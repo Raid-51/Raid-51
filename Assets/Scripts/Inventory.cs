@@ -157,7 +157,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void SaveNclear(GameObject dropI)
+    void SaveNclear(GameObject dropI) //Geymir hluti í switchscenemanager svo spilarinn geti farið á milli scene-a og hlutinir haldast á sömu stöðum
     {
         SSM.AllPickups.Add(dropI);
         dropI.GetComponent<Object>().SceneNumber = SceneManager.GetActiveScene().buildIndex;

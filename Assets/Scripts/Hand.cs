@@ -50,21 +50,21 @@ public class Hand : MonoBehaviour
             ShowItem(false, false, true);
     }
 
-    public void RemoveItem(int slotno)
+    public void RemoveItem(int slotno) //Tekur hlut úr höndinni
     {
-        if (slotno == 1)
+        if (slotno == 1) //Tekur hlut úr slot 1
         {
             Destroy(Slot1);
             Slot1 = Placeholder;
             Slot1ItemID = -1;
         }
-        if (slotno == 2)
+        if (slotno == 2) //Tekur hlut úr slot 2
         {
             Destroy(Slot2);
             Slot2 = Placeholder;
             Slot2ItemID = -1;
         }
-        if (slotno == 3)
+        if (slotno == 3) //Tekur hlut úr slot 3
         {
             Destroy(Slot3);
             Slot3 = Placeholder;
@@ -94,14 +94,14 @@ public class Hand : MonoBehaviour
         }
     }
 
-    void ItemPlacement(GameObject slot)
+    void ItemPlacement(GameObject slot) //Færir hlutina á réttan stað í höndinni
     {
         slot.transform.SetParent(HandPos.transform);
         slot.transform.localPosition = Vector3.zero;
         slot.transform.localRotation = Quaternion.identity;
     }
     
-    //Sýnir hlutinn ú höndinni
+    //Sýnir og felur hluti í höndinni
     void ShowItem(bool s1, bool s2, bool s3)
     {
         Slot1.SetActive(s1);
