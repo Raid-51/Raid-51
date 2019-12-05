@@ -106,22 +106,17 @@ public class Interaction : MonoBehaviour
                     }
                 }
             }
-            //Ef það hittir lás sem er hægt að opna
-            else if (hit.collider.tag == "Lock")
-            {
-
-            }
             //Ef það hittir ammo
             else if (hit.collider.tag == "Ammo")
             {
                 IF.Interacting(10); //Sýnir texta
                 if (Input.GetMouseButtonDown(0)) //Ef spilarinn "interactar" við ammo-ið (smellir á mús)
                 {
-                    if (Gun.Ammo != 10) //Ef inventory-ið er ekki fullt
+                    if (Gun.Ammo != 10) //Ef ammoið er ekki fullt
                     {
-                        Gun.Ammo += 10;
+                        Gun.Ammo += 10; //Bætir á ammo hjá spilaranum
                         if (Gun.Ammo > 10) Gun.Ammo = 10;
-                        Destroy(hit.collider.gameObject); //Eyðir hlutinum úr veröldinni
+                        Destroy(hit.collider.gameObject); //Eyðir ammokassanum úr veröldinni
                     }
                 }
             }

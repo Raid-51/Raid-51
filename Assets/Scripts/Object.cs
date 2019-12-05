@@ -8,6 +8,8 @@ public class Object : MonoBehaviour
     public string ObjectName;
     public int ObjectID;
     public bool Interactable = true;
+
+    //Values til að vista hluti á milli scene-a
     [Space]
     [HideInInspector]
     public int SceneNumber;

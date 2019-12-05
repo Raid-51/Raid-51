@@ -41,6 +41,7 @@ public class GunController : MonoBehaviour
 
         if (INV.CurrentItemID() == 3) //Ef spilarinn er ða halda á byssu
         {
+            //Setur texta sem segir manni hvað maður er með mikið ammo, og breytir crosshair-inu
             Crosshair.SetActive(true);
             AmmoText.SetActive(true);
 
@@ -70,7 +71,7 @@ public class GunController : MonoBehaviour
                 }
             }
         }
-        else
+        else //Felur ammotexta og crosshair-inu
         {
             Crosshair.SetActive(false);
             AmmoText.SetActive(false);
